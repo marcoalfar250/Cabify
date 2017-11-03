@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Matenimientos</title>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
+        <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/wow.js"></script>
+        <script src="js/jquery.bxslider.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="contactform/contactform.js"></script>
+        <script src="js/VeiculosJS.js" type="text/javascript"></script>
+        <!-- =======================================================
+            Theme Name: Baker
+            Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+            Author: BootstrapMade.com
+            Author URL: https://bootstrapmade.com
+        ======================================================= -->
+    </head>
+    <body>
+        
+        <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
+            </div>
+            <div class="modal-body" id="myModalMessage">
+                <p>This is a small modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        <div class="loader"></div>
+        <div id="myDiv">
+            <!--HEADER-->
+            <div class="header">
+                <div class="bg-color">
+                    <header id="main-header">
+                        <nav class="navbar navbar-default navbar-fixed-top">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Man<span class="logo-dec">tenimientos</span></a>
+                                </div>
+                                <div class="collapse navbar-collapse" id="myNavbar">
+
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="active"><a href="#main-header">Inicio</a></li>
+                                        <li class=""><a href="#feature">Usuarios</a></li>
+                                        <li class=""><a href="#service">Veiculos</a></li>
+                                        <li class=""><a href="#service">Conductores</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </nav>
+                    </header>
+                    <div class="wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="banner-info text-center wow fadeIn delay-05s">
+                                    <h1 class="bnr-title">Bienvenido Administardor</h1>
+                                    <h2 class="bnr-sub-title">Nombre Admin</h2>
+                                    <p class="bnr-para">Ingresaste a la zona de mantenimientos de Ca<span class="logo-dec">bify</span><br>Seleciona un elemento <br>para modificar o editar</p>
+                                    <div class="overlay-detail">
+                                        <a href="#feature"><i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ HEADER-->
+            <!---->
+            
+            <section id="ManVeiculo" class="section-padding wow fadeInUp delay-05s">
+                <div class="container">
+                    <div class="row">
+                        <div class="container">
+                            <div class="page-header">
+                                <h1>Veiculos <small><span class="logo-dec"></span>Sistema para la administración</small></h1>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <!-- ********************************************************** -->
+                                        <!-- COLUMNA DEL MENU -->
+                                        <!-- ********************************************************** -->
+                                        <div class="col-md-4">
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Mantenimientos
+                                                    <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Mantenimiento Usuarios</a></li>
+                                                    <li><a href="#">Mantenimiento Veiculos</a></li>
+                                                    <li><a href="#">Mantenimiento Conductores</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="Logout">Cerrar Sesión</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- ********************************************************** -->
+                                        <!-- COLUMNA DEL MENU -->
+                                        <!-- ********************************************************** -->
+
+                                        <!-- ********************************************************** -->
+                                        <!-- COLUMNA DEL BOTON DE CERRAR SESION -->
+                                        <!-- ********************************************************** -->
+                                        <div class="col-md-4" style="text-align: right;">
+                                            <a class="btn btn-warning" href="Logout" role="button">
+                                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                                Cerrar Sesión
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading"><h3>Mantenimiento de Veiculos</h3></div>
+                                <div class="panel-body">
+                                    <center>
+                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">Insertar Veiculo</button>
+                                    </center><br>
+                                    <!-- ********************************************************** -->
+                                    <div class="col-sm-12">
+                                        <form role="form" onsubmit="return false;" id="formPersonas" class="form-horizontal centered">
+                                            <div class="form-group" id="groupCedula">
+                                                <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
+                                                    <p><b>Buscar por placa del veiculo:</b></p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <input type="email" class="form-control" id="email" placeholder="Digite la plca del veiculo">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">
+                                                        Buscar <span class="glyphicon glyphicon-search"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- ********************************************************** -->
+
+                                    <table class="table table-hover table-condensed" id="tablaVeiculo"></table>
+
+                                </div>
+                                <div class="panel-footer">Nota: Acciones validas dependeran del rol del usuario</div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </section>
+            
+            
+        </div>
+    </body>
+</html>

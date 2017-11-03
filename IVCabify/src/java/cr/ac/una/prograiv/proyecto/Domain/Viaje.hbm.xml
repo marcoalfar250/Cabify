@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02/11/2017 02:42:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.proyecto.Domain.Viaje" table="viaje" catalog="cabify" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="conductor" class="cr.ac.una.prograiv.proyecto.Domain.Conductor" fetch="select">
+            <column name="Conductor_Id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="cr.ac.una.prograiv.proyecto.Domain.Usuario" fetch="select">
+            <column name="Usuario_Id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.proyecto.Domain.Vehiculo" fetch="select">
+            <column name="Vehiculo_Placa" length="10" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="Fecha" length="10" not-null="true" />
+        </property>
+        <property name="horaIn" type="time">
+            <column name="HoraIN" length="8" not-null="true" />
+        </property>
+        <property name="horaFn" type="time">
+            <column name="HoraFn" length="8" not-null="true" />
+        </property>
+        <property name="precioTotal" type="double">
+            <column name="PrecioTotal" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="rutas" table="ruta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Viaje_ID" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograiv.proyecto.Domain.Ruta" />
+        </set>
+    </class>
+</hibernate-mapping>

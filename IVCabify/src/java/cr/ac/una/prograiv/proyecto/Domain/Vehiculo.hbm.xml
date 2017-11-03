@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02/11/2017 02:42:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.proyecto.Domain.Vehiculo" table="vehiculo" catalog="cabify" optimistic-lock="version">
+        <id name="placa" type="string">
+            <column name="Placa" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="conductor" class="cr.ac.una.prograiv.proyecto.Domain.Conductor" fetch="select">
+            <column name="Conductor_Id" not-null="true" />
+        </many-to-one>
+        <property name="modelo" type="string">
+            <column name="Modelo" length="45" not-null="true" />
+        </property>
+        <property name="ahno" type="int">
+            <column name="Ahno" not-null="true" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="20" not-null="true" />
+        </property>
+        <property name="puntuacion" type="int">
+            <column name="puntuacion" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="15" not-null="true" />
+        </property>
+        <property name="ubicacion" type="string">
+            <column name="ubicacion" length="45" not-null="true" />
+        </property>
+        <property name="uusarioActual" type="java.lang.Integer">
+            <column name="UusarioActual" />
+        </property>
+        <property name="choferactual" type="java.lang.Integer">
+            <column name="choferactual" />
+        </property>
+        <property name="ultimaMod" type="date">
+            <column name="UltimaMod" length="10" />
+        </property>
+        <property name="ultModUs" type="java.lang.Integer">
+            <column name="UltModUs" />
+        </property>
+        <set name="viajes" table="viaje" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Vehiculo_Placa" length="10" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.prograiv.proyecto.Domain.Viaje" />
+        </set>
+    </class>
+</hibernate-mapping>

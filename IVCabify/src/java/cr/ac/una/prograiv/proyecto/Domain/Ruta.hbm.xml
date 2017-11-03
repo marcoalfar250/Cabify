@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02/11/2017 02:42:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cr.ac.una.prograiv.proyecto.Domain.Ruta" table="ruta" catalog="cabify" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="viaje" class="cr.ac.una.prograiv.proyecto.Domain.Viaje" fetch="select">
+            <column name="Viaje_ID" not-null="true" />
+        </many-to-one>
+        <property name="puntoI" type="string">
+            <column name="PuntoI" length="45" not-null="true" />
+        </property>
+        <property name="puntoF" type="string">
+            <column name="PuntoF" length="45" not-null="true" />
+        </property>
+        <property name="distancia" type="int">
+            <column name="Distancia" not-null="true" />
+        </property>
+        <property name="precio" type="double">
+            <column name="Precio" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="usuarioactual" type="java.lang.Integer">
+            <column name="usuarioactual" />
+        </property>
+        <property name="vehiculoactual" type="java.lang.Integer">
+            <column name="vehiculoactual" />
+        </property>
+        <property name="choferactual" type="java.lang.Integer">
+            <column name="choferactual" />
+        </property>
+        <property name="ultimaMod" type="date">
+            <column name="UltimaMod" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

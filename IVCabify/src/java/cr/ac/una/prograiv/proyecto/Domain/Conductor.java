@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.proyecto.Domain;
-// Generated 02/11/2017 02:42:10 PM by Hibernate Tools 4.3.1
+// Generated 04/11/2017 01:53:14 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -21,11 +21,9 @@ public class Conductor  implements java.io.Serializable {
      private Date fechaVl;
      private String vehiculoActual;
      private String tipoConductor;
-     private String clienteActual;
+     private Integer clienteActual;
      private Date ultimaMod;
      private Integer ultModUs;
-     private Set<Viaje> viajes = new HashSet<Viaje>(0);
-     private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>(0);
 
     public Conductor() {
     }
@@ -42,22 +40,22 @@ public class Conductor  implements java.io.Serializable {
         this.vehiculoActual = vehiculoActual;
         this.tipoConductor = tipoConductor;
     }
-    public Conductor(int id, String nombre, String apellidos, String password, String tipoL, Date fechaN, Date fechaVl, String vehiculoActual, String tipoConductor, String clienteActual, Date ultimaMod, Integer ultModUs, Set<Viaje> viajes, Set<Vehiculo> vehiculos) {
-       this.id = id;
-       this.nombre = nombre;
-       this.apellidos = apellidos;
-       this.password = password;
-       this.tipoL = tipoL;
-       this.fechaN = fechaN;
-       this.fechaVl = fechaVl;
-       this.vehiculoActual = vehiculoActual;
-       this.tipoConductor = tipoConductor;
-       this.clienteActual = clienteActual;
-       this.ultimaMod = ultimaMod;
-       this.ultModUs = ultModUs;
-       this.viajes = viajes;
-       this.vehiculos = vehiculos;
+
+    public Conductor(int id, String nombre, String apellidos, String password, String tipoL, Date fechaN, Date fechaVl, String vehiculoActual, String tipoConductor, Integer clienteActual, Date ultimaMod, Integer ultModUs) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.password = password;
+        this.tipoL = tipoL;
+        this.fechaN = fechaN;
+        this.fechaVl = fechaVl;
+        this.vehiculoActual = vehiculoActual;
+        this.tipoConductor = tipoConductor;
+        this.clienteActual = clienteActual;
+        this.ultimaMod = ultimaMod;
+        this.ultModUs = ultModUs;
     }
+    
    
     public int getId() {
         return this.id;
@@ -122,11 +120,11 @@ public class Conductor  implements java.io.Serializable {
     public void setTipoConductor(String tipoConductor) {
         this.tipoConductor = tipoConductor;
     }
-    public String getClienteActual() {
+    public Integer getClienteActual() {
         return this.clienteActual;
     }
     
-    public void setClienteActual(String clienteActual) {
+    public void setClienteActual(Integer clienteActual) {
         this.clienteActual = clienteActual;
     }
     public Date getUltimaMod() {
@@ -143,23 +141,6 @@ public class Conductor  implements java.io.Serializable {
     public void setUltModUs(Integer ultModUs) {
         this.ultModUs = ultModUs;
     }
-    public Set<Viaje> getViajes() {
-        return this.viajes;
-    }
-    
-    public void setViajes(Set<Viaje> viajes) {
-        this.viajes = viajes;
-    }
-    public Set<Vehiculo> getVehiculos() {
-        return this.vehiculos;
-    }
-    
-    public void setVehiculos(Set<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
-    }
-
-
-
 
 }
 

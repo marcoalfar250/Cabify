@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02/11/2017 02:42:11 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/11/2017 01:53:15 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.proyecto.Domain.Conductor" table="conductor" catalog="cabify" optimistic-lock="version">
         <id name="id" type="int">
@@ -32,8 +32,8 @@
         <property name="tipoConductor" type="string">
             <column name="TipoConductor" length="20" not-null="true" />
         </property>
-        <property name="clienteActual" type="string">
-            <column name="ClienteActual" length="45" />
+        <property name="clienteActual" type="java.lang.Integer">
+            <column name="ClienteActual" />
         </property>
         <property name="ultimaMod" type="date">
             <column name="UltimaMod" length="10" />
@@ -41,17 +41,5 @@
         <property name="ultModUs" type="java.lang.Integer">
             <column name="UltModUs" />
         </property>
-        <set name="viajes" table="viaje" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Conductor_Id" not-null="true" />
-            </key>
-            <one-to-many class="cr.ac.una.prograiv.proyecto.Domain.Viaje" />
-        </set>
-        <set name="vehiculos" table="vehiculo" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="Conductor_Id" not-null="true" />
-            </key>
-            <one-to-many class="cr.ac.una.prograiv.proyecto.Domain.Vehiculo" />
-        </set>
     </class>
 </hibernate-mapping>

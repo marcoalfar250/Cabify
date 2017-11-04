@@ -1,0 +1,35 @@
+use cabify;
+
+
+insert into vehiculo values('SDJ-345','2017',2017,'Negro',5,'Activo','Heredia',13234,12354,78545,curdate(),7899);
+
+
+insert into vehiculo values('JYG-345','Acent',2017,'Negro',5,'Activo','Heredia',13234,6435,78245545,curdate(),789249);
+
+insert into vehiculo values('ETC-754','X5',2010,'Rosa',4,'Activo','Heredia',13234,1236554,7854345,curdate(),789249);
+
+insert into vehiculo values('LKI-098','Jaguar',2015,'Blamco',1,'Activo','Heredia',13234,12535354,785435545,curdate(),7865499);
+
+
+insert into usuario values(115640030,'Marco','Alfaro Ramirez','marcosz125@hotmail','123456',curdate(),'Heredia','87052909','admin',1234,1548,curdate(),12584);
+
+
+insert into usuario values(345345345,'Juan','Alfaro Ramirez','marcosz125@hotmail','123456',curdate(),'Heredia','87052909','normal',1234,1548,curdate(),12584);
+
+insert into usuario values(78678837,'Luis','Alfaro Ramirez','marcosz125@hotmail','123456',curdate(),'Heredia','87052909','normal',1234,1548,curdate(),12584);
+
+insert into usuario values(86796456,'Ian','Alfaro Ramirez','marcosz125@hotmail','123456',curdate(),'Heredia','87052909','normal',1234,1548,curdate(),12584);
+
+insert into usuario values(45348687,'Jeaustin','Alfaro Ramirez','marcosz125@hotmail','123456',curdate(),'Heredia','87052909','normal',1234,1548,curdate(),12584);
+
+
+
+
+insert into conductor values(13234,'Juan','solis','47852','b1',curdate(),curdate(),'484','Cnormal','ASD',curdate(),757575);
+
+
+delete from usuario where id = '115640030';
+
+
+
+insert into conductor values(28974,"Maria","Gomez","789456","B2",curdate(),curdate(),"0","admin",0,curdate(),0);

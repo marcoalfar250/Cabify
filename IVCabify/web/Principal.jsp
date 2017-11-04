@@ -11,9 +11,7 @@
         <title>Cabify</title>
         <meta charset="utf-8">
         <%@ include file="Imports.jspf" %>
-        <script src="js/UsuarioJS.js" type="text/javascript"></script>
-        <script src="js/PrincipalJS.js" type="text/javascript"></script>
-
+        
     </head>
     <body>
 
@@ -26,9 +24,9 @@
                     </div>
 
                     <div class="modal-body" id="myModalMan">
-                        <a href="MantenimientoUsuario.jsp" class="btn btn-primary">Mantenimiento Usuarios</a> 
+                        <a href="UsuarioMante.jsp" class="btn btn-primary">Mantenimiento Usuarios</a> 
                         <a href="" class="btn btn-primary" data-toggle="modal">Mantenimiento Vehiculo</a>
-                        <a href="" class="btn btn-primary" data-toggle="modal">Mantenimiento Conductor</a>
+                        <a href="ConducorMante.jsp" class="btn btn-primary" >Mantenimiento Conductor</a>
                     </div>
                 </div>
             </div>

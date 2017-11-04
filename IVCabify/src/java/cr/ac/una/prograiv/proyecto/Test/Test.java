@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.proyecto.Test;
 
 import cr.ac.una.prograiv.proyecto.BL.ConductorBL;
 import cr.ac.una.prograiv.proyecto.BL.UsuarioBL;
+import cr.ac.una.prograiv.proyecto.Domain.Conductor;
 import cr.ac.una.prograiv.proyecto.Domain.Usuario;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +33,7 @@ public class Test {
         Vehiculo marco = VL.findById("ETC-754");*/
 
         /*UsuarioBL UL = new UsuarioBL();
-
+        
         Usuario u = new Usuario(111, "Juan", "Ramirez", "juan1234@gmail.com", "1234", new Date(), "S.J.M", "22660503", "admin", 123, 432, new Date(), 12345);
         UL.save(u);
 
@@ -40,8 +41,16 @@ public class Test {
         Usuario us = UL.findById(115640030);
         //UL.delete(UL.findById(86796456));
         System.out.println("Hello");*/
-
         
+        
+        /*ConductorBL cbl = new ConductorBL();
+        
+        Conductor c = new Conductor(125464,"Juana Maria","Gonzales","125547","B1",new Date(),new Date(),"0","admin",0,new Date(),0);
+        //cbl.save(c);
+        //cbl.merge(c);
+        //List<Conductor> lista = cbl.findAll(Conductor.class.getName());
+        Conductor nueco = cbl.findById(125464);
+        System.out.println("");*/
 
     }
 

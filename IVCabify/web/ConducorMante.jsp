@@ -10,7 +10,7 @@
     <head>
         <title>Mantenimiento de Usuarios</title>
         <%@ include file="Imports.jspf" %>
-        <script src="js/UsuarioJS.js" type="text/javascript"></script>
+        <script src="js/ConductorJS.js" type="text/javascript"></script>
     </head>
     <body>
 
@@ -33,14 +33,14 @@
             </div>
         </div>
         <!-- ********************************************************** -->
-        <!-- Modal del BootsTrap formulario del ingreso de usuarios                  -->
+        <!-- Modal del BootsTrap formulario del ingreso de conductores                  -->
 
         <div class="modal fade" id="myModalConductor" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Usuarios
+                        <h4 class="modal-title" id="myModalTitle">Insertar / Modificar Conductores
                     </div>
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return false;" id="formConductores">
@@ -59,14 +59,25 @@
                                 <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
                             </div>
 
-                            <div class="form-group" id="groupCorreo">
-                                <label for="Correo">Correo:</label>
-                                <input type="text" class="form-control" id="Correo" placeholder="Correo Electronico">
-                            </div>
-
                             <div class="form-group" id="groupPassWord">
                                 <label for="password">Contraseña:</label>
                                 <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                            </div>
+                            
+                            <div class="form-group" id="groupTipoLic">
+                                <label for="Telefono">Tipo de Cedula:</label>
+                                <div class="selectContainer form-control">
+                                    <select id="comboTiposLic" class="form-control" name="tipos">
+                                        <option value="">Escoja una opción</option>
+                                        <option value="A1">A1</option>
+                                        <option value="A2">A2</option>
+                                        <option value="A3">A3</option>
+                                        <option value="B1">B1</option>
+                                        <option value="B2">B2</option>
+                                        <option value="B3">B3</option>
+                                        <option value="B4">B4</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group" id="groupFechaNacimiento">
@@ -78,21 +89,21 @@
                                     </span>
                                 </div>
                             </div>
-
-                            <div class="form-group" id="groupDirreción">
-                                <label for="Dirreción">Dirreción:</label>
-                                <textarea class="form-control" rows="3" id="Dirreción"></textarea>
+                            
+                            <div class="form-group" id="groupFechaVencimiento">
+                                <label for="dpFechaVencimiento">Fecha Vencimiento licencia:</label>
+                                <div id="dpFechaVencimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaVencimientoText">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
                             </div>
 
-                            <div class="form-group" id="groupTelefono">
-                                <label for="Telefono">Telefono:</label>
-                                <input type="text" class="form-control" id="Telefono" placeholder="Telefono">
-                            </div>
-
-                            <div class="form-group" id="groupTipoLic">
-                                <label for="Telefono">Tipo Usuario:</label>
+                            <div class="form-group" id="groupTipoCon">
+                                <label for="Telefono">Tipo Concuctor</label>
                                 <div class="selectContainer form-control">
-                                    <select id="comboTipos" class="form-control" name="tipos">
+                                    <select id="comboConduc" class="form-control" name="tipos">
                                         <option value="">Escoja una opción</option>
                                         <option value="admin">Administrador</option>
                                         <option value="normal">Usuario Normal</option>
@@ -100,9 +111,8 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group">
-                                <input type="hidden" value="agregarUsuario" id="UsuariosAction"/>
+                                <input type="hidden" value="agregarConductor" id="ConductoresAction"/>
                                 <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
                             </div>
@@ -139,10 +149,10 @@
                                 <div class="collapse navbar-collapse" id="myNavbar">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="active"><a href="Principal.jsp">Inicio</a></li>
+                                        <li class=""><a href="Principal.jsp">Inicio</a></li>
                                         <li class=""><a href="#feature">Usuarios</a></li>
                                         <li class=""><a href="#service">Veiculos</a></li>
-                                        <li class=""><a href="#service">Conductores</a></li>
+                                        <li class="active"><a href="#service">Conductores</a></li>
                                     </ul>
 
                                 </div>
@@ -186,7 +196,7 @@
                                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Mantenimientos
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="UsuarioMante.jsp">Mantenimiento Usuarios</a></li>
+                                                    <li><a href="#">Mantenimiento Usuarios</a></li>
                                                     <li><a href="#">Mantenimiento Veiculos</a></li>
                                                     <li><a href="#">Mantenimiento Conductores</a></li>
                                                     <li class="divider"></li>
@@ -211,20 +221,20 @@
                                 </div>
                             </div>
                             <div class="panel panel-primary">
-                                <div class="panel-heading"><h3>Mantenimiento de Usuarios</h3></div>
+                                <div class="panel-heading"><h3>Mantenimiento de Conductores</h3></div>
                                 <div class="panel-body">
                                     <center>
-                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarFormUsuario">Insertar Usuario</button>
+                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalConductor" id="btMostarFormConductor">Insertar Conductor</button>
                                     </center><br>
                                     <!-- ********************************************************** -->
                                     <div class="col-sm-12">
-                                        <form role="form" onsubmit="return false;" id="formUsuario" class="form-horizontal centered">
+                                        <form role="form" onsubmit="return false;" id="formConductor" class="form-horizontal centered">
                                             <div class="form-group" id="groupCedula">
                                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
-                                                    <p><b>Buscar por id de usuario:</b></p>
+                                                    <p><b>Buscar por id de conductor</b></p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <input type="email" class="form-control" id="email" placeholder="Digite el id del usuario">
+                                                    <input type="email" class="form-control" id="email" placeholder="Digite el id del conductor">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">
@@ -236,7 +246,7 @@
                                     </div>
                                     <!-- ********************************************************** -->
 
-                                    <table class="table table-hover table-condensed" id="tablaUsuarios"></table>
+                                    <table class="table table-hover table-condensed" id="tablaConductor"></table>
 
                                 </div>
                                 <div class="panel-footer">Nota: Acciones validas dependeran del rol del usuario</div>

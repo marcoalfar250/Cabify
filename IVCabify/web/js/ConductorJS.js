@@ -26,9 +26,9 @@ $(function () {
     });
 
     //agrega los eventos las capas necesarias
-    //$("#enviar").click(function () {
-    // enviar();
-    //});
+    $("#enviar").click(function () {
+     enviar();
+    });
 
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
@@ -116,7 +116,47 @@ function dibujarFila(rowData) {
                         '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'+
                     '</button></td>'));
 }
+function enviar() {
+    if (validar()) {
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'ConductorServlet',
+            data: {
+                accion: $("#ConductoresAction").val(),
+                cedula: $("#cedula").val(),
+                nombre: $("#nombre").val(),
+                apellidos: $("#apellidos").val(),
+                password: $("#password").val(),
+                tipoL: $("#comboTiposLic").val(),
+                fechaN: $("#dpFechaNacimiento").data('date'),
+                fechaVl: $("#dpFechaVencimiento").data('date'),
+                tipoConductor: $("#comboConduc").val()
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "C~") {
+                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
+                    $("#myModalConductor").modal("hide");
+                    consultarConductores();
+                } else {
+                    if (tipoRespuesta === "E~") {
+                        mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
+                    } else {
+                        mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador", "Error!");
+                    }
+                }
 
+            },
+            type: 'POST'
+        });
+    } else {
+        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+    }
+}
 function mostrarMensaje(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#mesajeResult").removeClass();
@@ -129,6 +169,65 @@ function mostrarMensaje(classCss, msg, neg) {
     $("#mesajeResultNeg").html(neg);
     $("#mesajeResultText").html(msg);
     $("#mesajeResultText").html(msg);
+}
+
+function validar() {
+    var validacion = true;
+
+    //Elimina estilo de error en los css
+    //notese que es sobre el grupo que contienen el input
+    $("#groupCedula").removeClass("has-error");
+    $("#groupNombre").removeClass("has-error");
+    $("#groupApellidos").removeClass("has-error");
+    $("#groupPassWord").removeClass("has-error");
+    $("#groupTipoLic").removeClass("has-error");
+    $("#groupFechaNacimiento").removeClass("has-error");
+    $("#groupFechaVencimiento").removeClass("has-error");
+    $("#groupTipoCon").removeClass("has-error");
+    
+   
+    //valida cada uno de los campos del formulario
+    //Nota: Solo si fueron digitados
+    if ($("#cedula").val() === "") {
+        $("#groupCedula").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#nombre").val() === "") {
+        $("#groupNombre").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#apellidos").val() === "") {
+        $("#groupApellidos").addClass("has-error");
+        validacion = false;
+    }
+   
+    if ($("#password").val() === "") {
+        $("#groupPassWord").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#FechaNacimientoText").data('date') === "") {
+        $("#groupFechaNacimiento").addClass("has-error");
+        validacion = false;
+    }
+    
+    if ($("#comboTiposLic").val() === "") {
+        $("#groupTipoLic").addClass("has-error");
+        validacion = false;
+    }
+    
+    if ($("#FechaVencimientoText").val() === "") {
+        $("#groupFechaVencimiento").addClass("has-error");
+        validacion = false;
+    }
+    
+    if ($("#comboConduc").val() === "") {
+        $("#groupTipoCon").addClass("has-error");
+        validacion = false;
+    }
+    
+  
+
+    return validacion;
 }
 
 function limpiarForm() {

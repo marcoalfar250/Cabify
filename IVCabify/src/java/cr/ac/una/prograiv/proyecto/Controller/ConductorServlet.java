@@ -10,6 +10,10 @@ import cr.ac.una.prograiv.proyecto.BL.ConductorBL;
 import cr.ac.una.prograiv.proyecto.Domain.Conductor;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,14 +38,14 @@ public class ConductorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try{
+        try {
             String json;
 
             //Se crea el objeto Persona
-            Conductor u = new Conductor();
+            Conductor c = new Conductor();
 
             //Se crea el objeto de la logica de negocio
-            ConductorBL uBL = new ConductorBL();
+            ConductorBL cBL = new ConductorBL();
 
             //Se hace una pausa para ver el modal
             Thread.sleep(1000);
@@ -51,32 +55,64 @@ public class ConductorServlet extends HttpServlet {
             //**********************************************************************
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-                        switch (accion) {
+            switch (accion) {
                 case "consultarConductores":
-                    json = new Gson().toJson(uBL.findAll(Conductor.class.getName()));
+                    json = new Gson().toJson(cBL.findAll(Conductor.class.getName()));
                     out.print(json);
                     break;
-                    
-                    case "consultarUsuariosByID":
-                    
-                    break;
-                    
-                    case "eliminarUsuarios":
-                    
-                        
-                 
+
+                case "consultarUsuariosByID":
+
                     break;
 
-                case "agregarUsuario": case "modificarUsuario":
+                case "eliminarUsuarios":
 
-                    
+                    break;
+
+                case "agregarConductor":
+                case "modificarConductor":
+                    c.setId(Integer.parseInt(request.getParameter("cedula")));
+                    c.setNombre(request.getParameter("nombre"));
+                    c.setApellidos(request.getParameter("apellidos"));
+                    c.setPassword(request.getParameter("password"));
+                    c.setTipoL(request.getParameter("tipoL"));
+                    //Guardar Correctamente en la base de datos
+                    String fechatxt = request.getParameter("fechaN");
+                    DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date = format.parse(fechatxt);
+
+                    String fechatxt1 = request.getParameter("fechaVl");
+                    DateFormat format1 = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                    Date date1 = format1.parse(fechatxt);
+
+                    c.setFechaN(date);
+                    c.setFechaVl(date1);
+                    c.setTipoConductor(request.getParameter("tipoConductor"));
+                    c.setVehiculoActual("0");
+                    c.setClienteActual(0);
+                    c.setUltimaMod(new Date());
+                    c.setUltModUs(0);
+                    if (accion.equals("agregarConductor")) { //es insertar 
+                        //Se guarda el objeto
+                        cBL.save(c);
+
+                        //Se imprime la respuesta con el response
+                        out.print("C~El Conductor fue ingresado correctamente");
+
+                    } else {//es modificar persona
+                        //Se guarda el objeto
+                        cBL.merge(c);
+
+                        //Se imprime la respuesta con el response
+                        out.print("C~El Conductor fue modificado correctamente");
+                    }
 
                     break;
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;
             }
-        }catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());
         } catch (Exception e) {
             out.print("E~" + e.getMessage());

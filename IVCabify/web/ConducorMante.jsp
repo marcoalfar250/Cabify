@@ -65,7 +65,7 @@
                             </div>
                             
                             <div class="form-group" id="groupTipoLic">
-                                <label for="Telefono">Tipo de Cedula:</label>
+                                <label for="Telefono">Tipo de Licencia:</label>
                                 <div class="selectContainer form-control">
                                     <select id="comboTiposLic" class="form-control" name="tipos">
                                         <option value="">Escoja una opción</option>
@@ -83,7 +83,7 @@
                             <div class="form-group" id="groupFechaNacimiento">
                                 <label for="dpFechaNacimiento">Fecha Nacimiento:</label>
                                 <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
+                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="FechaNacimientoText">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -93,7 +93,7 @@
                             <div class="form-group" id="groupFechaVencimiento">
                                 <label for="dpFechaVencimiento">Fecha Vencimiento licencia:</label>
                                 <div id="dpFechaVencimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
-                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaVencimientoText">
+                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="FechaVencimientoText">
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>

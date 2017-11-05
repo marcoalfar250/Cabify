@@ -214,7 +214,7 @@
                                 <div class="panel-heading"><h3>Mantenimiento de Usuarios</h3></div>
                                 <div class="panel-body">
                                     <center>
-                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarFormUsuario">Insertar Usuario</button>
+                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarFormUsuarios">Insertar Usuario</button>
                                     </center><br>
                                     <!-- ********************************************************** -->
                                     <div class="col-sm-12">

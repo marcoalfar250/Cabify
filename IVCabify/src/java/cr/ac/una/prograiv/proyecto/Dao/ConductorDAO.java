@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.proyecto.Dao;
 
 import cr.ac.una.prograiv.proyecto.Domain.Conductor;
 import cr.ac.una.prograiv.proyecto.Utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -85,6 +86,18 @@ public class ConductorDAO extends HibernateUtil implements IBaseDao<Conductor, I
         return listaConductor;
     }
 
-    
-    
+    @Override
+    public List createQueryHQL(Integer o) {
+        List lista = null;
+        try {
+            iniciarOperacion();
+            String sql = "from Conductor where id like '%%%d%%'";
+            sql = String.format(sql,o);
+            lista = getSession().createQuery(sql).list();
+        } finally {
+            getSession().close();
+        }
+        return lista;
+    }
+
 }

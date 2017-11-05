@@ -35,7 +35,7 @@
         <!-- ********************************************************** -->
         <!-- Modal del BootsTrap formulario del ingreso de usuarios                  -->
 
-        <div class="modal fade" id="myModalConductor" role="dialog">
+        <div class="modal fade" id="myModalUsuarios" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -214,7 +214,7 @@
                                 <div class="panel-heading"><h3>Mantenimiento de Usuarios</h3></div>
                                 <div class="panel-body">
                                     <center>
-                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="myModalUsuarios">Insertar Usuario</button>
+                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarForm">Insertar Usuario</button>
                                     </center><br>
                                     <!-- ********************************************************** -->
                                     <div class="col-sm-12">

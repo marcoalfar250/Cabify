@@ -157,6 +157,91 @@ function enviar() {
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
 }
+
+function consultarConductorByID(idConductor) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando el usuario seleccionado");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ConductorServlet',
+        data: {
+            accion: "consultarConductorByID",
+            idConductor: idConductor
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se oculta el mensaje de espera
+            ocultarModal("myModal");
+            limpiarForm();
+            //se muestra el formulario
+            $("#myModalConductor").modal();
+            
+            //************************************************************************
+            //carga información de la persona en el formulario
+            //************************************************************************
+            //se indicar que la cédula es solo readOnly
+            $("#cedula").attr('readonly', 'readonly');
+            
+            //se modificar el hidden que indicar el tipo de accion que se esta realizando
+            $("#ConductoresAction").val("modificarConductor"); 
+            
+            //se carga la información en el formulario
+            $("#cedula").val(data.id);
+            $("#nombre").val(data.nombre);
+            $("#apellidos").val(data.apellidos);
+            $("#password").val(data.password);
+            $("#comboTiposLic").val(data.tipoL);
+            
+            //carga de fecha
+            
+            var fecha = new Date(data.fechaN);
+            var fechatxt = fecha.getDate() +"/" +fecha.getMonth()+1 + "/" + fecha.getFullYear();
+            $("#dpFechaNacimiento").data({date: fechatxt});
+            $("#FechaNacimientoText").val(fechatxt);
+            
+            
+            var fecha1 = new Date(data.fechaVl);
+            var fechatxt1 = fecha1.getDate() +"/" +fecha1.getMonth()+1 + "/" + fecha1.getFullYear();
+            $("#dpFechaVencimiento").data({date: fechatxt1});
+            $("#FechaVencimientoText").val(fechatxt1);
+            
+            //$("#dpFechaNacimiento")$('.datepicker').datepicker('update', new Date(2011, 2, 5));
+            $("#comboConduc").val(data.tipoConductor);
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
+
+function eliminarConductor(idConductor){
+    
+    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando al conductor seleccionado");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'ConductorServlet',
+        data: {
+            accion: "eliminarUsuarios",
+            idConductor: idConductor
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se cambia el mensaje del modal por la respuesta del ajax
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "E~") {
+                cambiarMensajeModal("myModal","Resultado acción",respuestaTxt);
+            }else{
+                setTimeout(consultarConductores, 3000);// hace una pausa y consulta la información de la base de datos
+            }
+        },
+        type: 'POST',
+        dataType: "text"
+    });
+}
+
 function mostrarMensaje(classCss, msg, neg) {
     //se le eliminan los estilos al mensaje
     $("#mesajeResult").removeClass();

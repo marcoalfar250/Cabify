@@ -61,7 +61,7 @@ public class ConductorServlet extends HttpServlet {
                     out.print(json);
                     break;
 
-                case "consultarConductoresByID":
+                case "consultarConductorByID":
                     
                     c = cBL.findById(Integer.parseInt(request.getParameter("idConductor")));
                     json = new Gson().toJson(c);
@@ -69,7 +69,7 @@ public class ConductorServlet extends HttpServlet {
                     
                     break;
 
-                case "eliminarUsuarios":
+                case "eliminarConductor":
                     
                     c.setId(Integer.parseInt(request.getParameter("idConductor")));
                     

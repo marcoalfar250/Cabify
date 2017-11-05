@@ -82,6 +82,7 @@ function dibujarTabla(dataJson) {
     row.append($("<th><b>PASSWORD</b></th>"));
     row.append($("<th><b>FECHA.N</th>"));
     row.append($("<th><b>FECHA.VL</th>"));
+    row.append($("<th><b>TIPO.LIC</th>"));
     row.append($("<th><b>VEHICULO</th>"));
     row.append($("<th><b>TIPO.CONDC</th>"));
     row.append($("<th><b>ULTIMA.MOD</th>"));
@@ -105,6 +106,7 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.password + "</td>"));
     row.append($("<td>" + rowData.fechaN + "</td>"));
     row.append($("<td>" + rowData.fechaVl + "</td>"));
+    row.append($("<td>" + rowData.tipoL + "</td>"));
     row.append($("<td>" + rowData.vehiculoActual + "</td>"));
     row.append($("<td>" + rowData.tipoConductor + "</td>"));
     row.append($("<td>" + rowData.ultimaMod + "</td>"));

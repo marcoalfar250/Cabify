@@ -31,6 +31,10 @@ $(function () {
         limpiarForm();
     });
     
+    $("#btBuscarUsuario").click(function () {
+        BuscarUsuario()();
+    });
+    
     
 });
 
@@ -58,6 +62,30 @@ function consultarUsuarios() {
         type: 'POST',
         dataType: "json"
     });
+}
+
+function BuscarUsuario(){
+    if(validarFiltro()){
+        $.ajax({
+        url: 'UsuarioServlet',
+        data: {
+            accion: "BuscarUsuario",
+            idUsuario: $("#CampoFiltro").val()
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+             dibujarTabla(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+    }else{
+        consultarUsuarios();
+    }
 }
 
 function dibujarTabla(dataJson) {
@@ -326,5 +354,15 @@ function validar() {
         validacion = false;
     }
 
+    return validacion;
+}
+
+function validarFiltro(){
+    var validacion = true;
+    $("#groupIDFiltro").removeClass("has-error");
+    if ($("#CampoFiltro").val() === "") {
+        $("#groupIDFiltro").addClass("has-error");
+        validacion = false;
+    }
     return validacion;
 }

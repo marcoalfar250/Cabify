@@ -75,7 +75,7 @@ public class ConductorServlet extends HttpServlet {
                     
                     cBL.delete(c);
                     
-                    out.print("El conductor fue elimanado correctamente");
+                    out.print("El conductor fue  elimanado correctamente");
                     
                     break;
 

@@ -141,8 +141,8 @@
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="Principal.jsp">Inicio</a></li>
                                         <li class=""><a href="#feature">Usuarios</a></li>
-                                        <li class=""><a href="#service">Veiculos</a></li>
-                                        <li class=""><a href="#service">Conductores</a></li>
+                                        <li class=""><a href="#service">Vehiculos</a></li>
+                                        <li class=""><a href="ConducorMante.jsp">Conductores</a></li>
                                     </ul>
 
                                 </div>
@@ -214,7 +214,7 @@
                                 <div class="panel-heading"><h3>Mantenimiento de Usuarios</h3></div>
                                 <div class="panel-body">
                                     <center>
-                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarFormUsuario">Insertar Usuario</button>
+                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="myModalUsuarios">Insertar Usuario</button>
                                     </center><br>
                                     <!-- ********************************************************** -->
                                     <div class="col-sm-12">

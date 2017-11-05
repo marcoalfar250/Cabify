@@ -45,7 +45,7 @@
                     <div class="modal-body" id="myModalMessage">
                         <form role="form" onsubmit="return false;" id="formConductores">
                             <div class="form-group" id="groupCedula">
-                                <label for="cedula">Cedula:</label>
+                                <label for="cedula">Cédula:</label>
                                 <input type="text" class="form-control" id="cedula" autofocus="true" placeholder="Cedula">
                             </div>
 
@@ -150,8 +150,8 @@
 
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class=""><a href="Principal.jsp">Inicio</a></li>
-                                        <li class=""><a href="#feature">Usuarios</a></li>
-                                        <li class=""><a href="#service">Veiculos</a></li>
+                                        <li class=""><a href="#UsuarioMante.jsp">Usuarios</a></li>
+                                        <li class=""><a href="#service">Vehiculos</a></li>
                                         <li class="active"><a href="#service">Conductores</a></li>
                                     </ul>
 
@@ -165,7 +165,7 @@
                                 <div class="banner-info text-center wow fadeIn delay-05s">
                                     <h1 class="bnr-title">Bienvenido Administardor</h1>
                                     <h2 class="bnr-sub-title">Nombre Admin</h2>
-                                    <p class="bnr-para">Ingresaste a la zona de mantenimientos de Ca<span class="logo-dec">bify</span><br>Seleciona un elemento <br>para modificar o editar</p>
+                                    <p class="bnr-para">Ingresaste a la zona de mantenimientos de <span class="logo-dec">Cabify</span><br>Seleciona un elemento <br>para modificar o editar</p>
                                     <div class="overlay-detail">
                                         <a href="#feature"><i class="fa fa-angle-down"></i></a>
                                     </div>
@@ -197,7 +197,7 @@
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="#">Mantenimiento Usuarios</a></li>
-                                                    <li><a href="#">Mantenimiento Veiculos</a></li>
+                                                    <li><a href="#">Mantenimiento Vehiculos</a></li>
                                                     <li><a href="#">Mantenimiento Conductores</a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="Logout">Cerrar Sesión</a></li>

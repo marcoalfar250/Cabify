@@ -198,8 +198,9 @@ function consultarUsuarioByID(idUsuario) {
             ocultarModal("myModal");
             limpiarForm();
             //se muestra el formulario
-            $("#myModalUsuarios").modal();
             
+            
+            $("#myModalUsuarios").modal();
             //************************************************************************
             //carga información de la persona en el formulario
             //************************************************************************

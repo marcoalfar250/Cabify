@@ -155,7 +155,7 @@
                                 <div class="banner-info text-center wow fadeIn delay-05s">
                                     <h1 class="bnr-title">Bienvenido Administardor</h1>
                                     <h2 class="bnr-sub-title">Nombre Admin</h2>
-                                    <p class="bnr-para">Ingresaste a la zona de mantenimientos de Ca<span class="logo-dec">bify</span><br>Seleciona un elemento <br>para modificar o editar</p>
+                                    <p class="bnr-para">Ingresaste a la zona de mantenimientos de <span class="logo-dec">Cabify</span><br>Seleciona un elemento <br>para modificar o editar</p>
                                     <div class="overlay-detail">
                                         <a href="#feature"><i class="fa fa-angle-down"></i></a>
                                     </div>
@@ -214,7 +214,7 @@
                                 <div class="panel-heading"><h3>Mantenimiento de Usuarios</h3></div>
                                 <div class="panel-body">
                                     <center>
-                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarForm">Insertar Usuario</button>
+                                        <button type="button" class="btn btn-primary centered" data-toggle="modal" data-target="#myModalUsuarios" id="btMostarFormUsuario">Insertar Usuario</button>
                                     </center><br>
                                     <!-- ********************************************************** -->
                                     <div class="col-sm-12">

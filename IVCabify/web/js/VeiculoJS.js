@@ -8,6 +8,7 @@
 $(function () {
     $("#btMostarFormVeiculo").click(function () {
         limpiarForm();
+        cargarConductores();
     });
     $("#color").spectrum({
         showPaletteOnly: true,
@@ -25,6 +26,11 @@ $(function () {
             ["#900", "#b45f06", "#bf9000", "#38761d", "#134f5c", "#0b5394", "#351c75", "#741b47"],
             ["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]
         ]
+    });
+    
+    $("#cancelar").click(function () {
+        limpiarForm();
+      $("#myModalVeiculo").modal("hide");
     });
 
 });
@@ -62,6 +68,30 @@ $(document).ready(function () {
     consultarVehiculos();
 });
 
+function cargarConductores() {
+    $.ajax({
+        url: 'ConductorServlet',
+        data: {
+            accion: "consultarConductores"
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            alert("Se presento un error a la hora de cargar la información de los conductores en el comboBox");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            for (i = 0; i < data.length; i++) {
+                $('#selectBox option[value='+data.id+']').remove();
+            }
+            for (var i = 0; i < data.length; i++) {
+                $(function () {
+                    $('#comboVConductor').append(new Option(data[i].nombre, data[i].id));
+                });
+            }
+
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+}
 function consultarVehiculos() {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de vehiculos en la base de datos");
     //Se envia la información por ajax
@@ -82,6 +112,47 @@ function consultarVehiculos() {
         type: 'POST',
         dataType: "json"
     });
+}
+
+function enviar() {
+    if (validar()) {
+        //Se envia la información por ajax
+        $.ajax({
+            url: 'VehiculosServlet',
+            data: {
+                accion: $("#VeiculosAction").val(),
+                placa: $("#placa").val(),
+                conductor: $("#comboVConductor").val(),
+                modelo: $("#modelo").val(),
+                ahno: $("#comboAño").val(),
+                color: $("#color").val(),
+                estado: $("#comboEstadoVehiculo").data('date')
+                
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                var respuestaTxt = data.substring(2);
+                var tipoRespuesta = data.substring(0, 2);
+                if (tipoRespuesta === "C~") {
+                    mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
+                    $("#myModalVeiculo").modal("hide");
+                    consultarUsuarios();
+                } else {
+                    if (tipoRespuesta === "E~") {
+                        mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
+                    } else {
+                        mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador", "Error!");
+                    }
+                }
+
+            },
+            type: 'POST'
+        });
+    } else {
+        mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
+    }
 }
 
 function dibujarTabla(dataJson) {
@@ -110,7 +181,7 @@ function dibujarTabla(dataJson) {
 
     for (var i = 0; i < dataJson.length; i++) {
         $(function () {
-            $('#'+dataJson[i].placa+'').spectrum({
+            $('#' + dataJson[i].placa + '').spectrum({
                 color: "#f00",
                 disabled: true
             });
@@ -139,4 +210,54 @@ function dibujarFila(rowData) {
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarVehiculo(' + rowData.placa + ');">' +
             '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' +
             '</button></td>'));
+}
+
+function validar() {
+    var validacion = true;
+
+    //Elimina estilo de error en los css
+    //notese que es sobre el grupo que contienen el input
+    $("#groupPlaca").removeClass("has-error");
+    $("#groupVehiConductores").removeClass("has-error");
+    $("#groupModelo").removeClass("has-error");
+    $("#groupAnho").removeClass("has-error");
+    $("#groupEstadoVeiculo").removeClass("has-error");
+
+
+
+    //valida cada uno de los campos del formulario
+    //Nota: Solo si fueron digitados
+    if ($("#Placa").val() === "") {
+        $("#groupPlaca").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#nombre").val() === "") {
+        $("#groupNombre").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#comboVConductor").val() === "") {
+        $("#groupVehiConductores").addClass("has-error");
+        validacion = false;
+    }
+
+    if ($("#modelo").val() === "") {
+        $("#groupModelo").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#comboAño").val() === "") {
+        $("#groupAnho").addClass("has-error");
+        validacion = false;
+    }
+
+    if ($("#comboTiposLic").val() === "") {
+        $("#groupTipoLic").addClass("has-error");
+        validacion = false;
+    }
+
+    if ($("#comboEstadoVehiculo").val() === "") {
+        $("#groupEstadoVeiculo").addClass("has-error");
+        validacion = false;
+    }
+
+    return validacion;
 }

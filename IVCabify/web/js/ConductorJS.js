@@ -39,6 +39,9 @@ $(function () {
     $("#btMostarFormConductor").click(function () {
         limpiarForm();
     });
+    $("#btBuscarConductor").click(function () {
+        BuscarConductor();
+    });
 });
 
 $(document).ready(function () {
@@ -65,6 +68,30 @@ function consultarConductores() {
         type: 'POST',
         dataType: "json"
     });
+}
+
+function BuscarConductor(){
+    if(validarFiltro()){
+        $.ajax({
+        url: 'ConductorServlet',
+        data: {
+            accion: "BuscarConductor",
+            idConductor: $("#FiltroConductor").val()
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+             dibujarTabla(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+    }else{
+        consultarConductores();
+    }
 }
 
 function dibujarTabla(dataJson) {
@@ -223,7 +250,7 @@ function eliminarConductor(idConductor){
     $.ajax({
         url: 'ConductorServlet',
         data: {
-            accion: "eliminarUsuarios",
+            accion: "eliminarConductor",
             idConductor: idConductor
         },
         error: function () { //si existe un error en la respuesta del ajax
@@ -330,4 +357,14 @@ function limpiarForm() {
 
     //Resetear el formulario
     $('#formConductores').trigger("reset");
+}
+
+function validarFiltro(){
+    var validacion = true;
+    $("#groupFiltroConductor").removeClass("has-error");
+    if ($("#FiltroVeiculo").val() === "") {
+        $("#groupFiltroConductor").addClass("has-error");
+        validacion = false;
+    }
+    return validacion;
 }

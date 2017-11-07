@@ -39,4 +39,9 @@ public class VehiculoBL extends BaseBL implements IBaseBL<Vehiculo, String> {
         return this.getDao(className).findAll();
     }
 
+    @Override
+    public List createQueryHQL(String o) {
+        return (List) this.getDao(Vehiculo.class.getName()).createQueryHQL(o);
+    }
+
 }

@@ -60,17 +60,23 @@ public class VehiculosServlet extends HttpServlet {
                     out.print(json);
                     break;
                 }
+                case "BuscarVehiculo":{
+                    json = new Gson().toJson(vBL.createQueryHQL(request.getParameter("PlacaVehiculo")));
+                    out.print(json);
+                    break;
+                }
                 case "agregarVehiculo": case "modificarVehiculo":{
                     v.setPlaca(request.getParameter("placa"));
                     v.setConductor(gf.findById(Integer.parseInt(request.getParameter("conductor"))));
                     v.setModelo(request.getParameter("modelo"));
+                    v.setMarca(request.getParameter("marca"));
                     v.setAhno(Integer.parseInt(request.getParameter("ahno")));
                     v.setColor(request.getParameter("color"));
                     v.setPuntuacion(0);
                     v.setEstado(request.getParameter("estado"));
+                    v.setCapPasaj(Integer.parseInt(request.getParameter("cantidadPasa")));
                     v.setUbicacion("");
                     v.setUusarioActual(0);
-                    v.setChoferactual(Integer.parseInt(request.getParameter("conductor")));
                     v.setUltimaMod(new Date());
                     v.setUltModUs(0);
                     if (accion.equals("agregarVehiculo")) { //es insertar 
@@ -78,14 +84,14 @@ public class VehiculosServlet extends HttpServlet {
                         vBL.save(v);
 
                         //Se imprime la respuesta con el response
-                        out.print("C~El Conductor fue ingresado correctamente");
+                        out.print("C~El vehiculo fue ingresado correctamente");
 
                     } else {//es modificar persona
                         //Se guarda el objeto
                         vBL.merge(v);
 
                         //Se imprime la respuesta con el response
-                        out.print("C~El Conductor fue modificado correctamente");
+                        out.print("C~El vehiculo fue modificado correctamente");
                     }
                     break;
                 }

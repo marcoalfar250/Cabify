@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/11/2017 01:53:15 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 07/11/2017 02:19:18 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.prograiv.proyecto.Domain.Usuario" table="usuario" catalog="cabify" optimistic-lock="version">
         <id name="id" type="int">
@@ -44,6 +44,5 @@
         <property name="ultModUs" type="java.lang.Integer">
             <column name="UltModUs" />
         </property>
-        
     </class>
 </hibernate-mapping>

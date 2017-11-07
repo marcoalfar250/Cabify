@@ -1,5 +1,5 @@
 package cr.ac.una.prograiv.proyecto.Domain;
-// Generated 04/11/2017 01:53:14 PM by Hibernate Tools 4.3.1
+// Generated 07/11/2017 02:19:17 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,17 +20,18 @@ public class Vehiculo  implements java.io.Serializable {
      private int puntuacion;
      private String estado;
      private String ubicacion;
+     private String marca;
+     private int capPasaj;
      private Integer uusarioActual;
-     private Integer choferactual;
      private Date ultimaMod;
      private Integer ultModUs;
-     private Set<Viaje> viajes = new HashSet<Viaje>(0);
+    
 
     public Vehiculo() {
     }
 
 	
-    public Vehiculo(String placa, Conductor conductor, String modelo, int ahno, String color, int puntuacion, String estado, String ubicacion) {
+    public Vehiculo(String placa, Conductor conductor, String modelo, int ahno, String color, int puntuacion, String estado, String ubicacion, String marca, int capPasaj) {
         this.placa = placa;
         this.conductor = conductor;
         this.modelo = modelo;
@@ -39,22 +40,26 @@ public class Vehiculo  implements java.io.Serializable {
         this.puntuacion = puntuacion;
         this.estado = estado;
         this.ubicacion = ubicacion;
+        this.marca = marca;
+        this.capPasaj = capPasaj;
     }
-    public Vehiculo(String placa, Conductor conductor, String modelo, int ahno, String color, int puntuacion, String estado, String ubicacion, Integer uusarioActual, Integer choferactual, Date ultimaMod, Integer ultModUs, Set<Viaje> viajes) {
-       this.placa = placa;
-       this.conductor = conductor;
-       this.modelo = modelo;
-       this.ahno = ahno;
-       this.color = color;
-       this.puntuacion = puntuacion;
-       this.estado = estado;
-       this.ubicacion = ubicacion;
-       this.uusarioActual = uusarioActual;
-       this.choferactual = choferactual;
-       this.ultimaMod = ultimaMod;
-       this.ultModUs = ultModUs;
-       this.viajes = viajes;
+
+    public Vehiculo(String placa, Conductor conductor, String modelo, int ahno, String color, int puntuacion, String estado, String ubicacion, String marca, int capPasaj, Integer uusarioActual, Date ultimaMod, Integer ultModUs) {
+        this.placa = placa;
+        this.conductor = conductor;
+        this.modelo = modelo;
+        this.ahno = ahno;
+        this.color = color;
+        this.puntuacion = puntuacion;
+        this.estado = estado;
+        this.ubicacion = ubicacion;
+        this.marca = marca;
+        this.capPasaj = capPasaj;
+        this.uusarioActual = uusarioActual;
+        this.ultimaMod = ultimaMod;
+        this.ultModUs = ultModUs;
     }
+   
    
     public String getPlaca() {
         return this.placa;
@@ -112,19 +117,26 @@ public class Vehiculo  implements java.io.Serializable {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
+    public String getMarca() {
+        return this.marca;
+    }
+    
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+    public int getCapPasaj() {
+        return this.capPasaj;
+    }
+    
+    public void setCapPasaj(int capPasaj) {
+        this.capPasaj = capPasaj;
+    }
     public Integer getUusarioActual() {
         return this.uusarioActual;
     }
     
     public void setUusarioActual(Integer uusarioActual) {
         this.uusarioActual = uusarioActual;
-    }
-    public Integer getChoferactual() {
-        return this.choferactual;
-    }
-    
-    public void setChoferactual(Integer choferactual) {
-        this.choferactual = choferactual;
     }
     public Date getUltimaMod() {
         return this.ultimaMod;
@@ -140,13 +152,7 @@ public class Vehiculo  implements java.io.Serializable {
     public void setUltModUs(Integer ultModUs) {
         this.ultModUs = ultModUs;
     }
-    public Set<Viaje> getViajes() {
-        return this.viajes;
-    }
     
-    public void setViajes(Set<Viaje> viajes) {
-        this.viajes = viajes;
-    }
 
 
 

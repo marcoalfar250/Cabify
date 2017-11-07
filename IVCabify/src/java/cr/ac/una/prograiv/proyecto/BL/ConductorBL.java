@@ -39,4 +39,9 @@ public class ConductorBL extends BaseBL implements IBaseBL<Conductor, Integer> {
         return this.getDao(className).findAll();
     }
 
+    @Override
+    public List createQueryHQL(Integer o) {
+        return (List) this.getDao(Conductor.class.getName()).createQueryHQL(o);
+    }
+
 }

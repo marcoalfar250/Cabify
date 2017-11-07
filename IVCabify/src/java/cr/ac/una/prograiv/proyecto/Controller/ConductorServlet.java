@@ -56,31 +56,38 @@ public class ConductorServlet extends HttpServlet {
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
             switch (accion) {
-                case "consultarConductores":
+                case "consultarConductores": {
                     json = new Gson().toJson(cBL.findAll(Conductor.class.getName()));
                     out.print(json);
                     break;
+                }
+                case "consultarConductorByID": {
 
-                case "consultarConductorByID":
-                    
                     c = cBL.findById(Integer.parseInt(request.getParameter("idConductor")));
                     json = new Gson().toJson(c);
                     out.print(json);
-                    
-                    break;
 
-                case "eliminarConductor":
-                    
+                    break;
+                }
+                case "eliminarConductor": {
+
                     c.setId(Integer.parseInt(request.getParameter("idConductor")));
-                    
-                    cBL.delete(c);
-                    
-                    out.print("El conductor fue  elimanado correctamente");
-                    
-                    break;
 
+                    cBL.delete(c);
+
+                    out.print("El conductor fue  elimanado correctamente");
+
+                    break;
+                }
+                
+                case "BuscarConductor":{
+                    json = new Gson().toJson(cBL.createQueryHQL(Integer.valueOf(request.getParameter("idConductor"))));
+                    out.print(json);
+                    break;
+                }
+ 
                 case "agregarConductor":
-                case "modificarConductor":
+                case "modificarConductor": {
                     c.setId(Integer.parseInt(request.getParameter("cedula")));
                     c.setNombre(request.getParameter("nombre"));
                     c.setApellidos(request.getParameter("apellidos"));
@@ -118,9 +125,11 @@ public class ConductorServlet extends HttpServlet {
                     }
 
                     break;
-                default:
+                }
+                default: {
                     out.print("E~No se indico la acción que se desea realizare");
                     break;
+                }
             }
         } catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());

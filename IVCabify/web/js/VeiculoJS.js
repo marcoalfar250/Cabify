@@ -10,7 +10,7 @@ $(function () {
         limpiarForm();
         cargarConductores();
     });
-    $("#color").spectrum({
+    $("#colorES").spectrum({
         showPaletteOnly: true,
         togglePaletteOnly: true,
         togglePaletteMoreText: 'more',
@@ -27,12 +27,19 @@ $(function () {
             ["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]
         ]
     });
-    
+
     $("#cancelar").click(function () {
         limpiarForm();
-      $("#myModalVeiculo").modal("hide");
+        $("#myModalVeiculo").modal("hide");
     });
 
+    $("#enviar").click(function () {
+        enviar();
+    });
+    
+    $("#btBuscarVeiculo").click(function () {
+        BuscarVehiculo();
+    });
 });
 
 function mostrarMensaje(classCss, msg, neg) {
@@ -92,6 +99,31 @@ function cargarConductores() {
         dataType: "json"
     });
 }
+
+function BuscarVehiculo(){
+    if(validarFiltro()){
+        $.ajax({
+        url: 'VehiculosServlet',
+        data: {
+            accion: "BuscarVehiculo",
+            PlacaVehiculo: $("#FiltroVeiculo").val()
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+             dibujarTabla(data);
+            // se oculta el modal esta funcion se encuentra en el utils.js
+            ocultarModal("myModal");
+        },
+        type: 'POST',
+        dataType: "json"
+    });
+    }else{
+        consultarVehiculos();
+    }
+}
+
 function consultarVehiculos() {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de vehiculos en la base de datos");
     //Se envia la información por ajax
@@ -123,11 +155,13 @@ function enviar() {
                 accion: $("#VeiculosAction").val(),
                 placa: $("#placa").val(),
                 conductor: $("#comboVConductor").val(),
+                marca:$("#comboMarca").val(),
+                cantidadPasa:$("#CantidadPasajeros").val(),
                 modelo: $("#modelo").val(),
                 ahno: $("#comboAño").val(),
-                color: $("#color").val(),
-                estado: $("#comboEstadoVehiculo").data('date')
-                
+                color: $("#colorES").val(),
+                estado: $("#comboEstadoVehiculo").val()
+
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -138,7 +172,7 @@ function enviar() {
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
                     $("#myModalVeiculo").modal("hide");
-                    consultarUsuarios();
+                    consultarVehiculos();
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");
@@ -166,11 +200,12 @@ function dibujarTabla(dataJson) {
     $("#tablaVeiculos").append(head);
     row.append($("<th><b>PLACA</b></th>"));
     row.append($("<th><b>CONDUCTOR</b></th>"));
+    row.append($("<th><b>MARCA</b></th>"));
     row.append($("<th><b>MODELO</b></th>"));
     row.append($("<th><b>AÑO</b></th>"));
     row.append($("<th><b>COLOR</b></th>"));
-    row.append($("<th><b>ESTADO.N</th>"));
-    row.append($("<th><b>CHOFER_ACTUAL</th>"));
+    row.append($("<th><b>ESTADO</th>"));
+    row.append($("<th><b>CANT.PASAJ</th>"));
     row.append($("<th><b>ULTIMA_MOD</th>"));
     row.append($("<th><b>ULTIMO_USUARIO</th>"));
 
@@ -182,7 +217,7 @@ function dibujarTabla(dataJson) {
     for (var i = 0; i < dataJson.length; i++) {
         $(function () {
             $('#' + dataJson[i].placa + '').spectrum({
-                color: "#f00",
+                color: dataJson[i].color,
                 disabled: true
             });
         });
@@ -197,11 +232,12 @@ function dibujarFila(rowData) {
     $("#tablaVeiculos").append(row);
     row.append($("<td>" + rowData.placa + "</td>"));
     row.append($("<td>" + rowData.conductor.nombre + "</td>"));
+    row.append($("<td>" + rowData.marca + "</td>"));
     row.append($("<td>" + rowData.modelo + "</td>"));
     row.append($("<td>" + rowData.ahno + "</td>"));
     row.append($("<td>" + '<input type="text" id="' + rowData.placa + '"/>' + "</td>"));
     row.append($("<td>" + rowData.estado + "</td>"));
-    row.append($("<td>" + rowData.choferactual + "</td>"));
+    row.append($("<td>" + rowData.capPasaj + "</td>"));
     row.append($("<td>" + rowData.ultimaMod + "</td>"));
     row.append($("<td>" + rowData.ultModUs + "</td>"));
     row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarVehiculoByID(' + rowData.placa + ');">' +
@@ -239,9 +275,18 @@ function validar() {
         $("#groupVehiConductores").addClass("has-error");
         validacion = false;
     }
+    
+    if ($("#CantidadPasajeros").val() === "") {
+        $("#groupPasajeros").addClass("has-error");
+        validacion = false;
+    }
 
     if ($("#modelo").val() === "") {
         $("#groupModelo").addClass("has-error");
+        validacion = false;
+    }
+    if ($("#comboMarca").val() === "") {
+        $("#groupMarca").addClass("has-error");
         validacion = false;
     }
     if ($("#comboAño").val() === "") {
@@ -259,5 +304,17 @@ function validar() {
         validacion = false;
     }
 
+    return validacion;
+}
+
+function validarFiltro(){
+    var validacion = true;
+    $("#groupFiltroVeiculo").removeClass("has-error");
+    
+    
+    if ($("#FiltroConductor").val() === "") {
+        $("#groupFiltroVeiculo").addClass("has-error");
+        validacion = false;
+    }
     return validacion;
 }

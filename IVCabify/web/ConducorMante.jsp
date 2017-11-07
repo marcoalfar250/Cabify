@@ -229,15 +229,15 @@
                                     <!-- ********************************************************** -->
                                     <div class="col-sm-12">
                                         <form role="form" onsubmit="return false;" id="formConductor" class="form-horizontal centered">
-                                            <div class="form-group" id="groupCedula">
+                                            <div class="form-group" id="groupFiltroConductor">
                                                 <div class="col-sm-4" style="text-align: right; vertical-align: middle;">
                                                     <p><b>Buscar por id de conductor</b></p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <input type="email" class="form-control" id="email" placeholder="Digite el id del conductor">
+                                                    <input type="text" class="form-control" id="FiltroConductor" placeholder="Digite el id del conductor">
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="#myModalFormulario" id="btMostarForm">
+                                                    <button type="button" class="btn btn-info centered" data-toggle="modal" data-target="" id="btBuscarConductor">
                                                         Buscar <span class="glyphicon glyphicon-search"></span>
                                                     </button>
                                                 </div>

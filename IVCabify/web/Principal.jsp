@@ -25,7 +25,7 @@
 
                     <div class="modal-body" id="myModalMan">
                         <a href="UsuarioMante.jsp" class="btn btn-primary">Mantenimiento Usuarios</a> 
-                        <a href="" class="btn btn-primary" data-toggle="modal">Mantenimiento Vehiculo</a>
+                        <a href="VehiculosMante.jsp" class="btn btn-primary">Mantenimiento Vehiculo</a>
                         <a href="ConducorMante.jsp" class="btn btn-primary" >Mantenimiento Conductor</a>
                     </div>
                 </div>

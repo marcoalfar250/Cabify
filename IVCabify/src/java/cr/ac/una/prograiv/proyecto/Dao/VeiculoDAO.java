@@ -7,6 +7,7 @@ package cr.ac.una.prograiv.proyecto.Dao;
 
 import cr.ac.una.prograiv.proyecto.Domain.Vehiculo;
 import cr.ac.una.prograiv.proyecto.Utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -85,6 +86,21 @@ public class VeiculoDAO extends HibernateUtil implements IBaseDao<Vehiculo, Stri
         return listaVehiculo;
     }
 
+    @Override
+    public List createQueryHQL(String o) {
+       List lista = null;
+        try {
+            iniciarOperacion();
+            String sql = "from Vehiculo where Placa like '%%%s%%' ";
+            sql = String.format(sql,o);
+            lista = getSession().createQuery(sql).list();
+        } finally {
+            getSession().close();
+        }
+        return lista;
+    }
     
-  
+
+   
+
 }

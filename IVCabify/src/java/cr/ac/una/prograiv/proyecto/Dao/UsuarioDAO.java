@@ -5,12 +5,11 @@
  */
 package cr.ac.una.prograiv.proyecto.Dao;
 
-
 import cr.ac.una.prograiv.proyecto.Domain.Usuario;
 import cr.ac.una.prograiv.proyecto.Utils.HibernateUtil;
+import java.util.LinkedHashMap;
 import java.util.List;
 import org.hibernate.HibernateException;
-
 
 /**
  *
@@ -21,15 +20,15 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDao<Usuario, Integ
     @Override
     public void save(Usuario o) {
         try {
-                iniciarOperacion();
-                getSession().save(o);
-                getTransac().commit();
-            } catch (HibernateException he) {
-                manejarException(he);
-                throw he;
-            } finally {
-                getSession().close();
-            }
+            iniciarOperacion();
+            getSession().save(o);
+            getTransac().commit();
+        } catch (HibernateException he) {
+            manejarException(he);
+            throw he;
+        } finally {
+            getSession().close();
+        }
     }
 
     @Override
@@ -86,5 +85,19 @@ public class UsuarioDAO extends HibernateUtil implements IBaseDao<Usuario, Integ
 
         return listaUsuario;
     }
-    
+
+    @Override
+    public List createQueryHQL(Integer o) {
+        List lista = null;
+        try {
+            iniciarOperacion();
+            String sql = "from Usuario where id like '%%%d%%'";
+            sql = String.format(sql,o);
+            lista = getSession().createQuery(sql).list();
+        } finally {
+            getSession().close();
+        }
+        return lista;
+    }
+
 }

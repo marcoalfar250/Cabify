@@ -44,4 +44,11 @@ public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer> {
 
     }
 
+    @Override
+    public List createQueryHQL(Integer o) {
+        return (List) this.getDao(Usuario.class.getName()).createQueryHQL(o);
+    }
+
+   
+
 }

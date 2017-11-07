@@ -122,6 +122,11 @@ public class UsuarioServlet extends HttpServlet {
                     }
 
                     break;
+                case "BuscarUsuario":
+                    json = new Gson().toJson(uBL.createQueryHQL(Integer.valueOf(request.getParameter("idUsuario"))));
+                    out.print(json);
+                    break;
+                
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;

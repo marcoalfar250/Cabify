@@ -65,6 +65,24 @@ public class VehiculosServlet extends HttpServlet {
                     out.print(json);
                     break;
                 }
+                case "consultarVehiculoByP": {
+
+                    v = vBL.findById(request.getParameter("Placa"));
+                    json = new Gson().toJson(v);
+                    out.print(json);
+
+                    break;
+                }
+                case "eliminarVehiculo": {
+
+                    v.setPlaca(request.getParameter("Placa"));
+
+                    vBL.delete(v);
+
+                    out.print("El vehiculo fue  elimanado correctamente");
+
+                    break;
+                }
                 case "agregarVehiculo": case "modificarVehiculo":{
                     v.setPlaca(request.getParameter("placa"));
                     v.setConductor(gf.findById(Integer.parseInt(request.getParameter("conductor"))));

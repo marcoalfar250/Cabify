@@ -52,14 +52,14 @@ public class Test {
         //cbl.merge(c);
         //List<Conductor> lista = cbl.findAll(Conductor.class.getName());
         */
-       /* Conductor nueco = cbl.findById(125464);
-        Vehiculo v = new Vehiculo("SDC-123",nueco,"TACOMA",2017,"Rosa",5,"activo","Heredia",0,nueco.getId(),new Date(),0);
-        //vnl.save(v);
-        vnl.merge(v);
+       Conductor nueco = cbl.findById(125464);
+        Vehiculo v = new Vehiculo("SDC-123",nueco,"TACOMA",2017,"Rosa",5,"activo","Heredia","TOYOTA",0,nueco.getId(),new Date(),0);
+      //vnl.save(v);
+        //vnl.merge(v);
         List<Vehiculo> listav = vnl.findAll(Vehiculo.class.getName());
-        Vehiculo vs = vnl.findById("SDC-123");
+        Vehiculo vs = vnl.findById("ASD654");
         
-        System.out.println("");*/
+        System.out.println("");
 
     }
 

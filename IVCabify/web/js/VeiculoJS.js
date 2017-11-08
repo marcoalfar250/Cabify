@@ -36,7 +36,7 @@ $(function () {
     $("#enviar").click(function () {
         enviar();
     });
-    
+
     $("#btBuscarVeiculo").click(function () {
         BuscarVehiculo();
     });
@@ -86,7 +86,7 @@ function cargarConductores() {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             for (i = 0; i < data.length; i++) {
-                $('#selectBox option[value='+data.id+']').remove();
+                $('#selectBox option[value=' + data.id + ']').remove();
             }
             for (var i = 0; i < data.length; i++) {
                 $(function () {
@@ -100,29 +100,69 @@ function cargarConductores() {
     });
 }
 
-function BuscarVehiculo(){
-    if(validarFiltro()){
+function BuscarVehiculo() {
+    if (validarFiltro()) {
         $.ajax({
+            url: 'VehiculosServlet',
+            data: {
+                accion: "BuscarVehiculo",
+                PlacaVehiculo: $("#FiltroVeiculo").val()
+            },
+            error: function () { //si existe un error en la respuesta del ajax
+                cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
+            },
+            success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+                dibujarTabla(data);
+                // se oculta el modal esta funcion se encuentra en el utils.js
+                ocultarModal("myModal");
+            },
+            type: 'POST',
+            dataType: "json"
+        });
+    } else {
+        consultarVehiculos();
+    }
+}
+
+function consultarVehiculoByP(Placa) {
+    mostrarModal("myModal", "Espere por favor..", "Consultando el vehiculo seleccionado");
+    //Se envia la información por ajax
+    $.ajax({
         url: 'VehiculosServlet',
         data: {
-            accion: "BuscarVehiculo",
-            PlacaVehiculo: $("#FiltroVeiculo").val()
+            accion: "consultarVehiculoByP",
+            Placa: Placa
         },
         error: function () { //si existe un error en la respuesta del ajax
-            cambiarMensajeModal("myModal","Resultado acción","Se presento un error, contactar al administador");
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-             dibujarTabla(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
+            // se oculta el mensaje de espera
             ocultarModal("myModal");
+            limpiarForm();
+            cargarConductores();
+            //se muestra el formulario
+            $("#myModalVeiculo").modal();
+            $("#placa").attr('readonly', 'readonly');
+            $("#VeiculosAction").val("modificarVehiculo");
+            //se modificar el hidden que indicar el tipo de accion que se esta realizando
+            $("#placa").val(data.placa);
+
+            //se carga la información en el formulario
+            $("#comboVConductor").val(data.conductor.id);
+            $("#comboMarca").val(data.marca);
+            $("#CantidadPasajeros").val(data.capPasaj);
+            $("#modelo").val(data.modelo);
+            $("#comboAño").val(data.ahno);
+            $("#colorES").val(data.color);
+            $("#comboEstadoVehiculo").val(data.estado);
         },
         type: 'POST',
         dataType: "json"
     });
-    }else{
-        consultarVehiculos();
-    }
 }
+
+
 
 function consultarVehiculos() {
     mostrarModal("myModal", "Espere por favor..", "Consultando la información de vehiculos en la base de datos");
@@ -146,6 +186,33 @@ function consultarVehiculos() {
     });
 }
 
+function eliminarVehiculo(Placa) {
+    mostrarModal("myModal", "Espere por favor..", "Se esta eliminando el vehiculo seleccionado");
+    //Se envia la información por ajax
+    $.ajax({
+        url: 'VehiculosServlet',
+        data: {
+            accion: "eliminarVehiculo",
+            Placa: Placa
+        },
+        error: function () { //si existe un error en la respuesta del ajax
+            cambiarMensajeModal("myModal", "Resultado acción", "Se presento un error, contactar al administador");
+        },
+        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
+            // se cambia el mensaje del modal por la respuesta del ajax
+            var respuestaTxt = data.substring(2);
+            var tipoRespuesta = data.substring(0, 2);
+            if (tipoRespuesta === "E~") {
+                cambiarMensajeModal("myModal", "Resultado acción", respuestaTxt);
+            } else {
+                setTimeout(consultarVehiculos, 3000);// hace una pausa y consulta la información de la base de datos
+            }
+        },
+        type: 'POST',
+        dataType: "text"
+    });
+}
+
 function enviar() {
     if (validar()) {
         //Se envia la información por ajax
@@ -155,8 +222,8 @@ function enviar() {
                 accion: $("#VeiculosAction").val(),
                 placa: $("#placa").val(),
                 conductor: $("#comboVConductor").val(),
-                marca:$("#comboMarca").val(),
-                cantidadPasa:$("#CantidadPasajeros").val(),
+                marca: $("#comboMarca").val(),
+                cantidadPasa: $("#CantidadPasajeros").val(),
                 modelo: $("#modelo").val(),
                 ahno: $("#comboAño").val(),
                 color: $("#colorES").val(),
@@ -230,7 +297,7 @@ function dibujarFila(rowData) {
 
     var row = $("<tr />");
     $("#tablaVeiculos").append(row);
-    row.append($("<td>" + rowData.placa + "</td>"));
+    row.append($("<td>" + rowData.placa.toString() + "</td>"));
     row.append($("<td>" + rowData.conductor.nombre + "</td>"));
     row.append($("<td>" + rowData.marca + "</td>"));
     row.append($("<td>" + rowData.modelo + "</td>"));
@@ -240,7 +307,8 @@ function dibujarFila(rowData) {
     row.append($("<td>" + rowData.capPasaj + "</td>"));
     row.append($("<td>" + rowData.ultimaMod + "</td>"));
     row.append($("<td>" + rowData.ultModUs + "</td>"));
-    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarVehiculoByID(' + rowData.placa + ');">' +
+
+    row.append($('<td><button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="consultarVehiculoByP(' + rowData.placa + ');">' +
             '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
             '</button>' +
             '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="eliminarVehiculo(' + rowData.placa + ');">' +
@@ -275,7 +343,7 @@ function validar() {
         $("#groupVehiConductores").addClass("has-error");
         validacion = false;
     }
-    
+
     if ($("#CantidadPasajeros").val() === "") {
         $("#groupPasajeros").addClass("has-error");
         validacion = false;
@@ -307,11 +375,11 @@ function validar() {
     return validacion;
 }
 
-function validarFiltro(){
+function validarFiltro() {
     var validacion = true;
     $("#groupFiltroVeiculo").removeClass("has-error");
-    
-    
+
+
     if ($("#FiltroConductor").val() === "") {
         $("#groupFiltroVeiculo").addClass("has-error");
         validacion = false;

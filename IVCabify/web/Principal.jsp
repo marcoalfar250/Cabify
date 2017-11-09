@@ -11,9 +11,27 @@
         <title>Cabify</title>
         <meta charset="utf-8">
         <%@ include file="Imports.jspf" %>
-        
+        <link href="css/LoginStyle.css" rel="stylesheet" type="text/css"/>
+        <script src="js/particles.min.js" type="text/javascript"></script>
+        <script src="js/ParJs.js" type="text/javascript"></script>
+        <script src="js/LoginJs.js" type="text/javascript"></script>
     </head>
     <body>
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <p>This is a small modal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="modal fade" id="myModalMantenimientos" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -84,6 +102,29 @@
             </div>
             <!--/ HEADER-->
             <!---->
+            <section id="Login">
+                <div class="container">
+                    <div id="login-box">
+                        <div class="controls">
+                             <h1 class="logo-caption"><span class="tweak">L</span>ogin</h1>
+                            <form role="form" onsubmit="return false;" id="formLogin">
+                                <div class="form-group" id="groupUsario">
+                                    <input id="usuario" type="text" name="username" placeholder="Username" class="form-control" />
+                                </div>
+                                <div class="form-group" id="groupPassword">
+                                    <input id="password" type="text" name="username" placeholder="Password" class="form-control" />
+                                </div>
+                                 <div class="form-group">
+                                 <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Login</button>
+                                  <button type="button" class="btn btn-default btn-block btn-custom" id="cancelar">Cancelar</button>
+                                 </div>
+                            </form>
+                        </div><!-- /.controls -->
+                    </div><!-- /#login-box -->
+                </div><!-- /.container -->
+                <div id="particles-js"></div>
+            </section>
+
             <section id="testimonial" class="wow fadeInUp delay-05s">
                 <div class="bg-testicolor">
                     <div class="container section-padding">

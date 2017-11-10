@@ -52,7 +52,7 @@
 
         <div class="loader"></div>
         <div id="myDiv">
-            <!--HEADER-->
+            <!--HEADER .l.>-->
             <div class="header">
                 <div class="bg-color">
                     <header id="main-header">

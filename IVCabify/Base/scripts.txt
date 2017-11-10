@@ -21,10 +21,7 @@ insert into conductor values (28974, 'Maria', 'Gomez', '789456', 'A1',curdate(),
 
 
 
+insert into vehiculo values('144567845','X6',2016,'rgb(204, 0, 0)',0, 'Activo', 'Heredia','BMW',5,125464,0,curdate(),0);
 
 
-
-insert into vehiculo values('144567845', 'X6',2016,'rgb(204, 0, 0)',0, 'Activo', 'Heredia',125464, 0,curdate(),0);
-
-i
-nsert into vehiculo values('78963456',2017,'rgb(204, 0, 0)',5,'Activo','Heredia',125464,0,curdate(),0);
+insert into vehiculo values('78963456','Tundra',2017,'rgb(204, 0, 0)',5,'Activo','Heredia','TOYOTA',7,125464,0,curdate(),0);

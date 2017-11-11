@@ -57,6 +57,7 @@ public class UsuarioServlet extends HttpServlet {
             //**********************************************************************
             HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
+            String usuario, password;
             switch (accion) {
                 case "consultarUsuarios":
                     json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
@@ -126,7 +127,37 @@ public class UsuarioServlet extends HttpServlet {
                     json = new Gson().toJson(uBL.createQueryHQL(Integer.valueOf(request.getParameter("idUsuario"))));
                     out.print(json);
                     break;
+                case "validarUsuario":
                 
+                    
+                Usuario verdadero= uBL.findById(Integer.parseInt(request.getParameter("usuario")));
+                        
+                
+                usuario = request.getParameter("usuario");
+                password = request.getParameter("password");
+                
+                if(usuario.equals("Administrador")|| usuario.equals("Normal"))
+                {
+                    if(usuario.equals(uBL.findById(u.getId())) && password.equals(u.getPassword()))
+                    {
+                        session = request.getSession(true);
+                        session.setAttribute("usuario", usuario);
+                        session.setAttribute("loginStatus", "login");
+                        if (usuario.equals("administrador"))
+                        {
+                            session.setAttribute("tipo", "Administrador");
+                        }
+                        else
+                        {
+                            session.setAttribute("tipo", "Normal");
+                        }
+                        out.print("C~Validación correcta... Está siendo redireccionando");
+                    }
+                    else{
+                    out.print("E~Usuario o contraseña incorrectos");
+                    }
+                }
+                        
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;

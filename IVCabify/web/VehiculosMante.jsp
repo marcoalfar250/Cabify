@@ -304,9 +304,9 @@
 
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class=""><a href="Principal.jsp">Inicio</a></li>
-                                        <li class=""><a href="#UsuarioMante.jsp">Usuarios</a></li>
-                                        <li class="active"><a href="#service">Vehiculos</a></li>
-                                        <li class=""><a href="#service">Conductores</a></li>
+                                        <li class=""><a href="UsuarioMante.jsp">Usuarios</a></li>
+                                        <li class="active"><a href="VehiculosMante.jsp">Vehiculos</a></li>
+                                        <li class=""><a href="ConducorMante.jsp">Conductores</a></li>
                                     </ul>
 
                                 </div>

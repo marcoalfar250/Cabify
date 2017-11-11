@@ -5,7 +5,30 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% 
+    HttpSession sesion = request.getSession(true);
+    String tipoUsuario = "";
+    if(sesion!=null){
+    if(sesion.getAttribute("usuario") == null){
+    response.sendRedirect("Principal.jsp");
+    }
+    else
+    {
+        tipoUsuario = (String)sesion.getAttribute("usuario");
+    }
+    
+    }
+    else{
+            response.sendRedirect("Principal.jsp");
+            }
+    
+    
+%>
+
 <!DOCTYPE html>
+
+
 <html>
     <head>
         <title>Mantenimiento de Usuarios</title>
@@ -140,8 +163,8 @@
 
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="Principal.jsp">Inicio</a></li>
-                                        <li class=""><a href="#feature">Usuarios</a></li>
-                                        <li class=""><a href="#service">Vehiculos</a></li>
+                                        <li class=""><a href="UsuarioMante.jps">Usuarios</a></li>
+                                        <li class=""><a href="VehiculosMante.jsp">Vehiculos</a></li>
                                         <li class=""><a href="ConducorMante.jsp">Conductores</a></li>
                                     </ul>
 

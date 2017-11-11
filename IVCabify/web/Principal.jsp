@@ -112,7 +112,7 @@
                                     <input id="usuario" type="text" name="username" placeholder="Username" class="form-control" />
                                 </div>
                                 <div class="form-group" id="groupPassword">
-                                    <input id="password" type="text" name="username" placeholder="Password" class="form-control" />
+                                    <input id="password" type="password" name="username" placeholder="Password" class="form-control" />
                                 </div>
                                  <div class="form-group">
                                  <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Login</button>

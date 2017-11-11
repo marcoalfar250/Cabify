@@ -22,7 +22,7 @@ function enviar() {
     if (validar()) {
         //Se envia la información por ajax
         $.ajax({
-            url: 'UsuariosServlet',
+            url: 'UsuarioServlet',
             data: {
                 accion: "validarUsuario",
                 usuario: $("#usuario").val(),
@@ -40,7 +40,7 @@ function enviar() {
                     
                     //se redirecciona en JavaScript
                     setTimeout(function(){
-                        window.location="PersonasJSP.jsp";
+                        window.location="Principal.jsp";
                     }, 2000);
                     
                     

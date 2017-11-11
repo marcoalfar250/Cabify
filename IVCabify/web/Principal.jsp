@@ -5,7 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+
 <html>
     <head>
         <title>Cabify</title>
@@ -102,11 +104,12 @@
             </div>
             <!--/ HEADER-->
             <!---->
+            <% if (sesion.equals(null) && nombre.equals("")) { %> 
             <section id="Login">
                 <div class="container">
                     <div id="login-box">
                         <div class="controls">
-                             <h1 class="logo-caption"><span class="tweak">L</span>ogin</h1>
+                            <h1 class="logo-caption"><span class="tweak">L</span>ogin</h1>
                             <form role="form" onsubmit="return false;" id="formLogin">
                                 <div class="form-group" id="groupUsario">
                                     <input id="usuario" type="text" name="username" placeholder="Username" class="form-control" />
@@ -114,16 +117,17 @@
                                 <div class="form-group" id="groupPassword">
                                     <input id="password" type="password" name="username" placeholder="Password" class="form-control" />
                                 </div>
-                                 <div class="form-group">
-                                 <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Login</button>
-                                  <button type="button" class="btn btn-default btn-block btn-custom" id="cancelar">Cancelar</button>
-                                 </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Login</button>
+                                    <button type="button" class="btn btn-default btn-block btn-custom" id="cancelar">Cancelar</button>
+                                </div>
                             </form>
                         </div><!-- /.controls -->
                     </div><!-- /#login-box -->
                 </div><!-- /.container -->
                 <div id="particles-js"></div>
             </section>
+            <% }%>
 
             <section id="testimonial" class="wow fadeInUp delay-05s">
                 <div class="bg-testicolor">

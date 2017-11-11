@@ -36,12 +36,12 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    $("#myModalFormulario").modal("hide");
+                    $("#Login").hide();
                     
                     //se redirecciona en JavaScript
-                    setTimeout(function(){
-                        window.location="Principal.jsp";
-                    }, 2000);
+                    //setTimeout(function(){
+                        //window.location="Principal.jsp";
+                   // }, 2000);
                     
                     
                 } else {

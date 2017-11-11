@@ -4,18 +4,19 @@
     Author     : Marco Andres
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true"%>
 
 <% 
     HttpSession sesion = request.getSession(true);
-    String tipoUsuario = "";
+    String nombre = "";
     if(sesion!=null){
     if(sesion.getAttribute("usuario") == null){
     response.sendRedirect("Principal.jsp");
     }
     else
     {
-        tipoUsuario = (String)sesion.getAttribute("usuario");
+       
+        nombre = (String) sesion.getAttribute("Nombre");
     }
     
     }
@@ -177,7 +178,7 @@
                             <div class="row">
                                 <div class="banner-info text-center wow fadeIn delay-05s">
                                     <h1 class="bnr-title">Bienvenido Administardor</h1>
-                                    <h2 class="bnr-sub-title">Nombre Admin</h2>
+                                    <h2 class="bnr-sub-title"><%out.print(sesion.getAttribute("Nombre"));%></h2>
                                     <p class="bnr-para">Ingresaste a la zona de mantenimientos de <span class="logo-dec">Cabify</span><br>Seleciona un elemento <br>para modificar o editar</p>
                                     <div class="overlay-detail">
                                         <a href="#feature"><i class="fa fa-angle-down"></i></a>

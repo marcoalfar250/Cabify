@@ -63,29 +63,30 @@ public class UsuarioServlet extends HttpServlet {
                     json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
                     out.print(json);
                     break;
-                    
-                    case "consultarUsuariosByID":
+
+                case "consultarUsuariosByID":
                     //se consulta la persona por ID
                     u = uBL.findById(Integer.parseInt(request.getParameter("idUsuario")));
-                    
+
                     //se pasa la informacion del objeto a formato JSON
                     json = new Gson().toJson(u);
                     out.print(json);
                     break;
-                    
-                    case "eliminarUsuarios":
-                    
-                        u.setId(Integer.parseInt(request.getParameter("idUsuario")));
-                    
-                        //Se elimina el objeto
-                        uBL.delete(u);
 
-                        //Se imprime la respuesta con el response
-                        out.print("El usuario fue eliminado correctamente");
-                 
+                case "eliminarUsuarios":
+
+                    u.setId(Integer.parseInt(request.getParameter("idUsuario")));
+
+                    //Se elimina el objeto
+                    uBL.delete(u);
+
+                    //Se imprime la respuesta con el response
+                    out.print("El usuario fue eliminado correctamente");
+
                     break;
 
-                case "agregarUsuario": case "modificarUsuario":
+                case "agregarUsuario":
+                case "modificarUsuario":
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
                     u.setId(Integer.parseInt(request.getParameter("cedula")));
@@ -127,37 +128,32 @@ public class UsuarioServlet extends HttpServlet {
                     json = new Gson().toJson(uBL.createQueryHQL(Integer.valueOf(request.getParameter("idUsuario"))));
                     out.print(json);
                     break;
-                case "validarUsuario":
-                
-                    
-                Usuario verdadero= uBL.findById(Integer.parseInt(request.getParameter("usuario")));
-                        
-                
-                usuario = request.getParameter("usuario");
-                password = request.getParameter("password");
-                
-                if(usuario.equals("Administrador")|| usuario.equals("Normal"))
-                {
-                    if(usuario.equals(uBL.findById(u.getId())) && password.equals(u.getPassword()))
-                    {
-                        session = request.getSession(true);
-                        session.setAttribute("usuario", usuario);
-                        session.setAttribute("loginStatus", "login");
-                        if (usuario.equals("administrador"))
-                        {
-                            session.setAttribute("tipo", "Administrador");
+                case "validarUsuario": {
+
+                    Usuario verdadero = uBL.findById(Integer.parseInt(request.getParameter("usuario")));
+
+                    Integer usuarioTyped = Integer.valueOf(request.getParameter("usuario"));
+                    String passwordlOGIN = String.valueOf(request.getParameter("password"));
+
+                    if (usuarioTyped.equals(verdadero.getId())) {
+                        if (passwordlOGIN.equals(verdadero.getPassword())) {
+                            session = request.getSession(true);
+                            session.setAttribute("usuario", usuarioTyped);
+                            session.setAttribute("loginStatus", "login");
+                            session.setAttribute("Nombre", verdadero.getNombre());
+                            if ("admin".equals(verdadero.getTipoUsuario())) {
+                                session.setAttribute("tipo", "Administrador");
+                            } else {
+                                session.setAttribute("tipo", "Normal");
+                            }
+                            out.print("C~Validación correcta... Está siendo redireccionando");
+                        } else {
+                            out.print("E~Usuario o contraseña incorrectos");
                         }
-                        else
-                        {
-                            session.setAttribute("tipo", "Normal");
-                        }
-                        out.print("C~Validación correcta... Está siendo redireccionando");
-                    }
-                    else{
-                    out.print("E~Usuario o contraseña incorrectos");
                     }
                 }
-                        
+                break;
+
                 default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;

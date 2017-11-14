@@ -26,7 +26,7 @@ function enviar() {
             data: {
                 accion: "validarUsuario",
                 usuario: $("#usuario").val(),
-                password: $("#password").val()
+                password: $("#PasswordLogin").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 mostrarMensaje("alert alert-danger", "Se genero un error, contacte al administrador (Error del ajax)", "Error!");
@@ -36,12 +36,12 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    $("#Login").hide();
+                    $("#Login1").hide();
                     
                     //se redirecciona en JavaScript
-                    //setTimeout(function(){
-                        //window.location="Principal.jsp";
-                   // }, 2000);
+                    setTimeout(function(){
+                        window.location="Principal.jsp";
+                    }, 2000);
                     
                     
                 } else {
@@ -75,7 +75,7 @@ function validar() {
         $("#groupUsario").addClass("has-error");
         validacion = false;
     }
-    if ($("#password").val() === "") {
+    if ($("#PasswordLogin").val() === "") {
         $("#groupPassword").addClass("has-error");
         validacion = false;
     }

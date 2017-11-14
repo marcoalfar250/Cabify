@@ -1,0 +1,20 @@
+ /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        position: relative;
+	top: 0px;
+	left: 35%;
+	transform: translateX(-50%);
+	width: 1200px;
+        height: 500px;
+	margin: 0 auto;
+	border: 1px solid black;
+	background: rgba(48, 46, 45, 1);
+	min-height: 250px;
+	padding: 20px;
+	z-index: 9999;
+      }
+      
+      /* Optional: Makes the sample page fill the window. */
+      
+

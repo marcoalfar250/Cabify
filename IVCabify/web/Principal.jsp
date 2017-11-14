@@ -22,21 +22,6 @@
     </head>
     <body>
         
- <!--        <div class="wrapper">
-                        <div class="container">
-                            <div class="row">
-                                <div class="banner-info text-center wow fadeIn delay-05s">
-                                    <h1 class="bnr-title">Bienvenido</h1>
-                                    <h2 class="bnr-sub-title"><%--out.print(sesion.getAttribute("Nombre"));--%></h2>
-                                    <p class="bnr-para">Has iniciado sesión<span class="logo-dec">Cabify</span><br>Seleciona hacer un viaje <br>para solicitar un servicio</p>
-                                    <div class="overlay-detail">
-                                        <a href="#feature"><i class="fa fa-angle-down"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-     -->   
         <div class="modal fade" id="ModalRegistroUsuario" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -122,7 +107,6 @@
         </div>
 
         
-         <%-- if (sesion.equals(null) && nombre.equals("")) {( --%>  
         <div class="modal face" id="Login1">
     
             <div class="modal-dialog">
@@ -139,7 +123,7 @@
                                     <input id="usuario" type="text" name="username" placeholder="Username" class="form-control" />
                                 </div>
                                 <div class="form-group" id="groupPassword">
-                                    <input id="password" type="password" name="username" placeholder="Password" class="form-control" />
+                                    <input id="PasswordLogin" type="password" name="username" placeholder="Password" class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Iniciar Sesión</button>
@@ -151,20 +135,6 @@
             </div>  
             
         </div>
-        <!--<div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Modal Header</h4>
-                    </div>
-                    <div class="modal-body" id="myModalMessage">
-                        <p>This is a small modal.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
 
         <div class="modal fade" id="myModalMantenimientos" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -260,8 +230,6 @@
                 <!--</div><!-- /.container -->
                 <div id="particles-js"></div>
            <!-- </section> -->
-       }) 
-                -->
             <section id="testimonial" class="wow fadeInUp delay-05s">
                 <div class="bg-testicolor">
                     <div class="container section-padding">

@@ -65,7 +65,7 @@
 	-o-transition: all 500ms ease;
 	transition: all 500ms ease;
 	background: rgba(48, 46, 45, 1);
-	border-color: #ff5252;
+	border-color: #ff5252; 
 }
 #particles-js{
   	width: 100%;

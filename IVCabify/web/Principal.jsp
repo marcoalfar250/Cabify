@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+
 <!DOCTYPE html>
 
 <html>
@@ -17,10 +18,140 @@
         <script src="js/particles.min.js" type="text/javascript"></script>
         <script src="js/ParJs.js" type="text/javascript"></script>
         <script src="js/LoginJs.js" type="text/javascript"></script>
+        
     </head>
     <body>
+        
+ <!--        <div class="wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="banner-info text-center wow fadeIn delay-05s">
+                                    <h1 class="bnr-title">Bienvenido</h1>
+                                    <h2 class="bnr-sub-title"><%--out.print(sesion.getAttribute("Nombre"));--%></h2>
+                                    <p class="bnr-para">Has iniciado sesión<span class="logo-dec">Cabify</span><br>Seleciona hacer un viaje <br>para solicitar un servicio</p>
+                                    <div class="overlay-detail">
+                                        <a href="#feature"><i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+     -->   
+        <div class="modal fade" id="ModalRegistroUsuario" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="myModalTitle">Registrarse</h4>
+                    </div>
+                    <div class="modal-body" id="myModalMessage">
+                        <form role="form" onsubmit="return false;" id="formConductores">
+                            <div class="form-group" id="groupCedula">
+                                <label for="cedula">Cedula:</label>
+                                <input type="text" class="form-control" id="cedula" autofocus="true" placeholder="Cedula">
+                            </div>
 
-        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="form-group" id="groupNombre">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
+                            </div>
+
+                            <div class="form-group" id="groupApellidos">
+                                <label for="apellidos">Apellidos:</label>
+                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+                            </div>
+
+                            <div class="form-group" id="groupCorreo">
+                                <label for="Correo">Correo:</label>
+                                <input type="text" class="form-control" id="Correo" placeholder="Correo Electronico">
+                            </div>
+
+                            <div class="form-group" id="groupPassWord">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                            </div>
+
+                            <div class="form-group" id="groupFechaNacimiento">
+                                <label for="dpFechaNacimiento">Fecha Nacimiento:</label>
+                                <div id="dpFechaNacimiento" class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
+                                    <input class="form-control" type="text" value="" readonly placeholder="dd/mm/aaaa" id="dpFechaNacimientoText">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="groupDirreción">
+                                <label for="Dirreción">Dirreción:</label>
+                                <textarea class="form-control" rows="3" id="Dirreción"></textarea>
+                            </div>
+
+                            <div class="form-group" id="groupTelefono">
+                                <label for="Telefono">Telefono:</label>
+                                <input type="text" class="form-control" id="Telefono" placeholder="Telefono">
+                            </div>
+
+                            <div class="form-group" id="groupTipoLic">
+                                <label for="Telefono">Tipo Usuario:</label>
+                                <div class="selectContainer form-control">
+                                    <select id="comboTipos" class="form-control" name="tipos">
+                                        <option value="">Escoja una opción</option>
+                                        <option value="normal" selected>Usuario Normal</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="hidden" value="agregarUsuario" id="UsuariosAction"/>
+                                <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
+                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                            </div>
+
+                            <div class="form-group height25" >
+                                <div class="alert alert-success hiddenDiv" id="mesajeResult">
+                                    <strong id="mesajeResultNeg">¡Que tenga un buen día!</strong> 
+                                    <span id="mesajeResultText">Gracias por registrarse a nuestros servicios</span>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+         <%-- if (sesion.equals(null) && nombre.equals("")) {( --%>  
+        <div class="modal face" id="Login1">
+    
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h1 class="logo-caption" aling="center"><span class="tweak">Iniciar </span>Sesión</h1>
+                    </div>
+                    
+                    <div class="modal-body">
+                    
+                            <form role="form" onsubmit="return false;" id="formLogin">
+                                <div class="form-group" id="groupUsario">
+                                    <input id="usuario" type="text" name="username" placeholder="Username" class="form-control" />
+                                </div>
+                                <div class="form-group" id="groupPassword">
+                                    <input id="password" type="password" name="username" placeholder="Password" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Iniciar Sesión</button>
+                                    <button type="button" class="btn btn-default btn-block btn-custom" id="cancelar">Cancelar</button>
+                                </div>
+                            </form>
+                    </div>
+                </div>  
+            </div>  
+            
+        </div>
+        <!--<div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -33,7 +164,7 @@
                 </div>
             </div>
         </div>
-
+        -->
 
         <div class="modal fade" id="myModalMantenimientos" role="dialog">
             <div class="modal-dialog modal-lg">
@@ -71,8 +202,8 @@
                                 <div class="collapse navbar-collapse" id="myNavbar">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li class="active"><a href="#main-header">Inicio</a></li>
-                                        <li class=""><a type="button" data-target="#myModalUsuarios" id="MostrarUsuarioP" class="btn btn-link" data-toggle="modal">Registrarse</a> </li>
+                                        <li class="active"><a href="#main-header">Inicio</a></li> <!--data-target="#myModalUsuarios"-->
+                                        <li class=""><a href="#ModalRegistroUsuario" type="button"  id="MostrarUsuarioP" class="btn btn-link" data-toggle="modal">Registrarse</a> </li>
                                         <li class=""><a href="#feature">Acerca</a></li>
                                         <li class=""><a href="#service">Servicios</a></li>
                                         <li class=""><a href="#service">Historia</a></li>
@@ -80,6 +211,7 @@
                                         <li class=""><a href="#testimonial">Testimonios</a></li>
                                         <li class=""><a href="#myModalMantenimientos" class="btn btn-link btn-lg" data-toggle="modal">Mantenimientos</a> </li>
                                         <li class=""><a href="#contact">Contactenos</a></li>
+                                        <li class=""><a href="#Login1" id="Login" data-toggle="modal">Iniciar Sesión</a></li>
                                     </ul>
 
                                 </div>
@@ -104,8 +236,9 @@
             </div>
             <!--/ HEADER-->
             <!---->
-            <% if (sesion.equals(null) && nombre.equals("")) { %> 
-            <section id="Login">
+            <%-- if (sesion.equals(null) && nombre.equals("")) { --%> 
+            
+           <!--  <section id="Login">
                 <div class="container">
                     <div id="login-box">
                         <div class="controls">
@@ -123,12 +256,12 @@
                                 </div>
                             </form>
                         </div><!-- /.controls -->
-                    </div><!-- /#login-box -->
-                </div><!-- /.container -->
+                    <!--</div><!-- /#login-box -->
+                <!--</div><!-- /.container -->
                 <div id="particles-js"></div>
-            </section>
-            <% }%>
-
+           <!-- </section> -->
+       }) 
+                -->
             <section id="testimonial" class="wow fadeInUp delay-05s">
                 <div class="bg-testicolor">
                     <div class="container section-padding">

@@ -6,11 +6,15 @@
 package cr.ac.una.prograiv.proyecto.Test;
 
 import cr.ac.una.prograiv.proyecto.BL.ConductorBL;
+import cr.ac.una.prograiv.proyecto.BL.RutaBL;
 import cr.ac.una.prograiv.proyecto.BL.UsuarioBL;
 import cr.ac.una.prograiv.proyecto.BL.VehiculoBL;
+import cr.ac.una.prograiv.proyecto.BL.ViajeBL;
 import cr.ac.una.prograiv.proyecto.Domain.Conductor;
+import cr.ac.una.prograiv.proyecto.Domain.Ruta;
 import cr.ac.una.prograiv.proyecto.Domain.Usuario;
 import cr.ac.una.prograiv.proyecto.Domain.Vehiculo;
+import cr.ac.una.prograiv.proyecto.Domain.Viaje;
 import java.util.Date;
 import java.util.List;
 
@@ -24,19 +28,17 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*VehiculoBL VL = new VehiculoBL();
-        
-        Vehiculo nv = new Vehiculo("SAR-524","TUNDRA",2010,"Rosa",4,"Activo","Chepe",12365,8745,new Date(),1264);
+        VehiculoBL VL = new VehiculoBL();
+       
         //VL.save(nv);
         //VL.merge(nv);
         //List<Vehiculo> veiculos = VL.findAll(Vehiculo.class.getName());
         //Veiculo bl = VL.findById("EDF-875");
-        VL.delete(nv);
-        Vehiculo marco = VL.findById("ETC-754");*/
+        Vehiculo marco = VL.findById("645746323");
 
-        /*UsuarioBL UL = new UsuarioBL();
-        
-        Usuario u = new Usuario(111, "Juan", "Ramirez", "juan1234@gmail.com", "1234", new Date(), "S.J.M", "22660503", "admin", 123, 432, new Date(), 12345);
+        UsuarioBL UL = new UsuarioBL();
+        Usuario us = UL.findById(115640030);
+        /*Usuario u = new Usuario(111, "Juan", "Ramirez", "juan1234@gmail.com", "1234", new Date(), "S.J.M", "22660503", "admin", 123, 432, new Date(), 12345);
         UL.save(u);
 
         List<Usuario> usuario = UL.findAll(Usuario.class.getName());
@@ -47,18 +49,24 @@ public class Test {
         
         ConductorBL cbl = new ConductorBL();
         VehiculoBL vnl = new VehiculoBL();
+          Conductor nueco = cbl.findById(125464);
         /*Conductor c = new Conductor(125464,"Juana Maria","Gonzales","125547","B1",new Date(),new Date(),"0","admin",0,new Date(),0);
         //cbl.save(c);
         //cbl.merge(c);
         //List<Conductor> lista = cbl.findAll(Conductor.class.getName());
         */
-       Conductor nueco = cbl.findById(125464);
-        Vehiculo v = new Vehiculo("SDC-123",nueco,"TACOMA",2017,"Rosa",5,"activo","Heredia","TOYOTA",0,nueco.getId(),new Date(),0);
-      //vnl.save(v);
-        //vnl.merge(v);
-        List<Vehiculo> listav = vnl.findAll(Vehiculo.class.getName());
-        Vehiculo vs = vnl.findById("ASD654");
-        
+      ViajeBL vBBL = new ViajeBL();
+     
+      Viaje v = new Viaje(111616,nueco,us,marco,new Date(),new Date(),new Date(),767575);
+       //vBBL.save(v);
+       //vBBL.merge(v);
+       //Viaje f = vBBL.findById(111616);
+       
+       RutaBL ruBL = new RutaBL();
+       
+       Ruta r = new Ruta(12345,v,"254353535","74564646",323232,656.454,115640030,645746323,125464,new Date());
+       ruBL.save(r);
+       
         System.out.println("");
 
     }

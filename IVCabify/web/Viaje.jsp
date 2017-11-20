@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@ include file="Imports.jspf" %>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs3rRQanjB7aZXgeWa6HY5iQrQ_Zn50MM &callback=initMap"
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5eCkq2I_5pcSxkdhKFhxQKUS38oTIStY &callback=initMap"
         async defer></script>
         <script src="js/Maps.js" type="text/javascript"></script>
         <link href="css/Maps.css" rel="stylesheet" type="text/css"/>

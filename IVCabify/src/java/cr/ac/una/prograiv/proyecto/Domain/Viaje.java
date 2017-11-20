@@ -20,7 +20,6 @@ public class Viaje  implements java.io.Serializable {
      private Date horaIn;
      private Date horaFn;
      private double precioTotal;
-     private Set<Ruta> rutas = new HashSet<Ruta>(0);
 
     public Viaje() {
     }
@@ -36,17 +35,7 @@ public class Viaje  implements java.io.Serializable {
         this.horaFn = horaFn;
         this.precioTotal = precioTotal;
     }
-    public Viaje(int id, Conductor conductor, Usuario usuario, Vehiculo vehiculo, Date fecha, Date horaIn, Date horaFn, double precioTotal, Set<Ruta> rutas) {
-       this.id = id;
-       this.conductor = conductor;
-       this.usuario = usuario;
-       this.vehiculo = vehiculo;
-       this.fecha = fecha;
-       this.horaIn = horaIn;
-       this.horaFn = horaFn;
-       this.precioTotal = precioTotal;
-       this.rutas = rutas;
-    }
+    
    
     public int getId() {
         return this.id;
@@ -104,17 +93,7 @@ public class Viaje  implements java.io.Serializable {
     public void setPrecioTotal(double precioTotal) {
         this.precioTotal = precioTotal;
     }
-    public Set<Ruta> getRutas() {
-        return this.rutas;
-    }
-    
-    public void setRutas(Set<Ruta> rutas) {
-        this.rutas = rutas;
-    }
-
-
-
-
+   
 }
 
 

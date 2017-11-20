@@ -33,18 +33,20 @@ public class Ruta  implements java.io.Serializable {
         this.distancia = distancia;
         this.precio = precio;
     }
+
     public Ruta(int id, Viaje viaje, String puntoI, String puntoF, int distancia, double precio, Integer usuarioactual, Integer vehiculoactual, Integer choferactual, Date ultimaMod) {
-       this.id = id;
-       this.viaje = viaje;
-       this.puntoI = puntoI;
-       this.puntoF = puntoF;
-       this.distancia = distancia;
-       this.precio = precio;
-       this.usuarioactual = usuarioactual;
-       this.vehiculoactual = vehiculoactual;
-       this.choferactual = choferactual;
-       this.ultimaMod = ultimaMod;
+        this.id = id;
+        this.viaje = viaje;
+        this.puntoI = puntoI;
+        this.puntoF = puntoF;
+        this.distancia = distancia;
+        this.precio = precio;
+        this.usuarioactual = usuarioactual;
+        this.vehiculoactual = vehiculoactual;
+        this.choferactual = choferactual;
+        this.ultimaMod = ultimaMod;
     }
+    
    
     public int getId() {
         return this.id;

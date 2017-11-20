@@ -8,7 +8,7 @@
             <column name="ID" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="viaje" class="cr.ac.una.prograiv.proyecto.Domain.Viaje" fetch="select">
+        <many-to-one name="viaje" class="cr.ac.una.prograiv.proyecto.Domain.Viaje" fetch="select" lazy="false">
             <column name="Viaje_ID" not-null="true" />
         </many-to-one>
         <property name="puntoI" type="string">

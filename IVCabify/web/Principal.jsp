@@ -18,6 +18,7 @@
         <script src="js/particles.min.js" type="text/javascript"></script>
         <script src="js/ParJs.js" type="text/javascript"></script>
         <script src="js/LoginJs.js" type="text/javascript"></script>
+        <script src="js/RegistroJS.js" type="text/javascript"></script>
         
     </head>
     <body>
@@ -30,7 +31,7 @@
                         <h4 class="modal-title" id="myModalTitle">Registrarse</h4>
                     </div>
                     <div class="modal-body" id="myModalMessage">
-                        <form role="form" onsubmit="return false;" id="formConductores">
+                        <form role="form" onsubmit="return false;" id="formRegistro">
                             <div class="form-group" id="groupCedula">
                                 <label for="cedula">Cedula:</label>
                                 <input type="text" class="form-control" id="cedula" autofocus="true" placeholder="Cedula">
@@ -81,7 +82,7 @@
                                 <div class="selectContainer form-control">
                                     <select id="comboTipos" class="form-control" name="tipos">
                                         <option value="">Escoja una opción</option>
-                                        <option value="normal" selected>Usuario Normal</option>
+                                        <option value="normal">Usuario Normal</option>
                                     </select>
                                 </div>
                             </div>
@@ -90,13 +91,13 @@
                             <div class="form-group">
                                 <input type="hidden" value="agregarUsuario" id="UsuariosAction"/>
                                 <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar2"  data-dismiss="modal" aria-label="Close" >Cancelar</button>
+                                <button type="reset" class="btn btn-danger" id="cancelar2">Cancelar</button>
                             </div>
 
                             <div class="form-group height25" >
                                 <div class="alert alert-success hiddenDiv" id="mesajeResult">
-                                    <strong id="mesajeResultNeg">¡Que tenga un buen día!</strong> 
-                                    <span id="mesajeResultText">Gracias por registrarse a nuestros servicios</span>
+                                    <strong id="mesajeResultNeg">¡Gracias!</strong> 
+                                    <span id="mesajeResultText">Por registrarse con nosotros</span>
                                 </div>
                             </div>
 

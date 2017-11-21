@@ -18,7 +18,7 @@
         <script src="js/particles.min.js" type="text/javascript"></script>
         <script src="js/ParJs.js" type="text/javascript"></script>
         <script src="js/LoginJs.js" type="text/javascript"></script>
-        <script src="js/RegistroJS.js" type="text/javascript"></script>
+        <!--<script src="js/RegistroJS.js" type="text/javascript"></script> -->
         
     </head>
     <body>
@@ -89,7 +89,7 @@
 
 
                             <div class="form-group">
-                                <input type="hidden" value="agregarUsuario" id="RegistroAction"/>
+                                <input type="hidden" value="RegistrarUsuario" id="RegistroAction"/>
                                 <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar2">Cancelar</button>
                             </div>
@@ -151,9 +151,9 @@
                         <a href="UsuarioMante.jsp" class="btn btn-primary">Mantenimiento Usuarios</a> 
                         <a href="VehiculosMante.jsp" class="btn btn-primary">Mantenimiento Vehiculo</a>
                         <a href="ConducorMante.jsp" class="btn btn-primary" >Mantenimiento Conductor</a>
-                       
+                        
                     </div>
-                    <button class="btn btn-danger" id="CerrarMantenimientos">Cerrar</button>
+                    <button class="btn btn-danger" id="CerrarMantenimientos" aria-laber="close">Cerrar</button>
                 </div>
                  
             </div>

@@ -84,10 +84,36 @@ public class UsuarioServlet extends HttpServlet {
                     out.print("El usuario fue eliminado correctamente");
 
                     break;
+                    
+                    case "validarUsuario": {
+
+                    Usuario verdadero = uBL.findById(Integer.parseInt(request.getParameter("usuario")));
+
+                    Integer usuarioTyped = Integer.valueOf(request.getParameter("usuario"));
+                    String passwordlOGIN = String.valueOf(request.getParameter("password"));
+
+                    if (usuarioTyped.equals(verdadero.getId())) {
+                        if (passwordlOGIN.equals(verdadero.getPassword())) {
+                            session = request.getSession(true);
+                            session.setAttribute("usuario", usuarioTyped);
+                            session.setAttribute("loginStatus", "login");
+                            session.setAttribute("Nombre", verdadero.getNombre());
+                            if ("admin".equals(verdadero.getTipoUsuario())) {
+                                session.setAttribute("tipo", "Administrador");
+                            } else {
+                                session.setAttribute("tipo", "Normal");
+                            }
+                            out.print("C~Validación correcta... Está siendo redireccionando");
+                        } else {
+                            out.print("E~Usuario o contraseña incorrectos");
+                        }
+                    }
+                }
+                break;
 
                 case "agregarUsuario":
                 case "modificarUsuario":
-                case "RegistroAction":    
+                case "RegistrarUsuario":    
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
                     u.setId(Integer.parseInt(request.getParameter("cedula")));
@@ -129,31 +155,7 @@ public class UsuarioServlet extends HttpServlet {
                     json = new Gson().toJson(uBL.createQueryHQL(Integer.valueOf(request.getParameter("idUsuario"))));
                     out.print(json);
                     break;
-                case "validarUsuario": {
-
-                    Usuario verdadero = uBL.findById(Integer.parseInt(request.getParameter("usuario")));
-
-                    Integer usuarioTyped = Integer.valueOf(request.getParameter("usuario"));
-                    String passwordlOGIN = String.valueOf(request.getParameter("password"));
-
-                    if (usuarioTyped.equals(verdadero.getId())) {
-                        if (passwordlOGIN.equals(verdadero.getPassword())) {
-                            session = request.getSession(true);
-                            session.setAttribute("usuario", usuarioTyped);
-                            session.setAttribute("loginStatus", "login");
-                            session.setAttribute("Nombre", verdadero.getNombre());
-                            if ("admin".equals(verdadero.getTipoUsuario())) {
-                                session.setAttribute("tipo", "Administrador");
-                            } else {
-                                session.setAttribute("tipo", "Normal");
-                            }
-                            out.print("C~Validación correcta... Está siendo redireccionando");
-                        } else {
-                            out.print("E~Usuario o contraseña incorrectos");
-                        }
-                    }
-                }
-                break;
+                
 
                 default:
                     out.print("E~No se indico la acción que se desea realizare");

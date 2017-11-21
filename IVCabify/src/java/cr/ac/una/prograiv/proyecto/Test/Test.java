@@ -6,12 +6,10 @@
 package cr.ac.una.prograiv.proyecto.Test;
 
 import cr.ac.una.prograiv.proyecto.BL.ConductorBL;
-import cr.ac.una.prograiv.proyecto.BL.RutaBL;
 import cr.ac.una.prograiv.proyecto.BL.UsuarioBL;
 import cr.ac.una.prograiv.proyecto.BL.VehiculoBL;
 import cr.ac.una.prograiv.proyecto.BL.ViajeBL;
 import cr.ac.una.prograiv.proyecto.Domain.Conductor;
-import cr.ac.una.prograiv.proyecto.Domain.Ruta;
 import cr.ac.una.prograiv.proyecto.Domain.Usuario;
 import cr.ac.una.prograiv.proyecto.Domain.Vehiculo;
 import cr.ac.una.prograiv.proyecto.Domain.Viaje;
@@ -57,15 +55,12 @@ public class Test {
         */
       ViajeBL vBBL = new ViajeBL();
      
-      Viaje v = new Viaje(111616,nueco,us,marco,new Date(),new Date(),new Date(),767575);
+     
        //vBBL.save(v);
        //vBBL.merge(v);
        //Viaje f = vBBL.findById(111616);
        
-       RutaBL ruBL = new RutaBL();
        
-       Ruta r = new Ruta(12345,v,"254353535","74564646",323232,656.454,115640030,645746323,125464,new Date());
-       ruBL.save(r);
        
         System.out.println("");
 

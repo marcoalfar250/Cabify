@@ -7,7 +7,6 @@ package cr.ac.una.prograiv.proyecto.BL;
 
 import cr.ac.una.prograiv.proyecto.Dao.ConductorDAO;
 import cr.ac.una.prograiv.proyecto.Dao.IBaseDao;
-import cr.ac.una.prograiv.proyecto.Dao.RutaDAO;
 import cr.ac.una.prograiv.proyecto.Dao.UsuarioDAO;
 import cr.ac.una.prograiv.proyecto.Dao.VeiculoDAO;
 import cr.ac.una.prograiv.proyecto.Dao.ViajeDAO;
@@ -26,7 +25,6 @@ public class BaseBL {
         daos.put("cr.ac.una.prograiv.proyecto.Domain.Conductor", new ConductorDAO());
         daos.put("cr.ac.una.prograiv.proyecto.Domain.Vehiculo", new VeiculoDAO());
         daos.put("cr.ac.una.prograiv.proyecto.Domain.Viaje", new ViajeDAO());
-        daos.put("cr.ac.una.prograiv.proyecto.Domain.Ruta", new RutaDAO());
         
     }
    

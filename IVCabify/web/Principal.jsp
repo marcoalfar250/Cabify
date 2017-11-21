@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <input type="hidden" value="agregarUsuario" id="UsuariosAction"/>
                                 <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
-                                <button type="reset" class="btn btn-danger" id="cancelar">Cancelar</button>
+                                <button type="reset" class="btn btn-danger" id="cancelar2"  data-dismiss="modal" aria-label="Close" >Cancelar</button>
                             </div>
 
                             <div class="form-group height25" >
@@ -118,7 +118,7 @@
                     
                     <div class="modal-body">
                     
-                            <form role="form" onsubmit="return false;" id="formLogin">
+                            <form role="form" id="formLogin" onsubmit="return false;" >
                                 <div class="form-group" id="groupUsario">
                                     <input id="usuario" type="text" name="username" placeholder="Username" class="form-control" />
                                 </div>
@@ -130,7 +130,7 @@
                                     
                                     <button type="button" class="btn btn-info btn-block btn-custom" id="loginButton">Iniciar Sesión</button>
                                     <button type="button" class="btn btn-warning btn-block btn-custom" id="cancelar">Cancelar</button>
-                                </div>
+                                </div> 
                             </form>
                     </div>
                 </div>  
@@ -143,15 +143,18 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" id="myModalTitle">Selecione el Mantenimiento
+                        <h4 class="modal-title" id="myModalTitle">Selecione el Mantenimiento</h4>
                     </div>
 
                     <div class="modal-body" id="myModalMan">
                         <a href="UsuarioMante.jsp" class="btn btn-primary">Mantenimiento Usuarios</a> 
                         <a href="VehiculosMante.jsp" class="btn btn-primary">Mantenimiento Vehiculo</a>
                         <a href="ConducorMante.jsp" class="btn btn-primary" >Mantenimiento Conductor</a>
+                       
                     </div>
+                    <button class="btn btn-danger" id="CerrarMantenimientos">Cerrar</button>
                 </div>
+                 
             </div>
         </div>
 
@@ -269,6 +272,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -311,9 +315,12 @@
                                 <h3 class="pad-bt15">Seguro</h3>
                                 <p>Conductores elegidos uno a uno con la formación necesaria. Comparte tu viaje para que tus amigos sepan dónde estás.</p>
                             </div>
+                        
                         </div>
                     </div>
+                
                 </div>
+                
             </section>
             <!---->
             <!---->
@@ -348,9 +355,12 @@
                                 <h3><span>U</span>netenos!</h3>
                                 <p>Siempre estamos buscando a nuevos conductores que quieran formar parte de nuestro equipo; es una gran oportunidad para obtener ingresos estables mientras conduces para clientes de las mejores empresas del mundo.<br>¿Qué tienes que hacer para trabajar con nosotros? Es muy sencillo. Dirígete a nuestra sección para conductores, rellena el formulario correspondiente y nos pondremos en contacto contigo.</p>
                             </div>
+                        
                         </div>
                     </div>
+                
                 </div>
+                
             </section>
             <!---->
             <!---->
@@ -390,9 +400,13 @@
                                     <p>En Cabify tenemos una amplia gama de conductores y veiculos, que tu simplemente date el lijo de escoger<br>asi de sencillo!!</p>
                                 </figcaption>
                             </figure>
+                        
                         </div>
+                        
                     </div>
+                 
                 </div>
+                
             </section>
             <!---->
             <!---->

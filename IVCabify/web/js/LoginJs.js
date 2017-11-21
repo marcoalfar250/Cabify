@@ -7,8 +7,8 @@ $(function () {
 
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
-        $("#Login1").modal("hide");
-        limpiarForm2();
+          limpiarForm();
+         $("#Login1").modal("hide");
     });
     
 });
@@ -59,6 +59,7 @@ function enviar() {
             type: 'POST'
         });
     } else {
+        alert("Debe digitar los campos del formulario");
         mostrarMensaje("alert alert-danger", "Debe digitar los campos del formulario", "Error!");
     }
 }
@@ -108,22 +109,10 @@ function mostrarMensaje(classCss, msg, neg) {
 function limpiarForm() {
     //setea el focus del formulario
     $('#usuario').focus();
-
-    //Resetear el formulario
-    $('#formLogin').trigger("reset");
-}
-
-function limpiarForm2() {
-    //setea el focus del formulario
-    $('#usuario').focus();
-    $("#usuario").removeAttr("readonly"); //elimina el atributo de solo lectura
+    $("#usuario").removeAttr("readonly");
+    $('#PasswordLogin').focus();
+    $("#PasswordLogin").removeAttr("readonly");
     
-    //se cambia la accion por agregarPersona
-    $("#UsuariosAction").val("agregarUsuario"); 
-
-    //esconde el div del mensaje
-    mostrarMensaje("hiddenDiv", "", "");
-
     //Resetear el formulario
     $('#formLogin').trigger("reset");
 }

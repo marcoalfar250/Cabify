@@ -89,7 +89,7 @@
 
 
                             <div class="form-group">
-                                <input type="hidden" value="agregarUsuario" id="UsuariosAction"/>
+                                <input type="hidden" value="agregarUsuario" id="RegistroAction"/>
                                 <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar2">Cancelar</button>
                             </div>

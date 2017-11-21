@@ -87,6 +87,7 @@ public class UsuarioServlet extends HttpServlet {
 
                 case "agregarUsuario":
                 case "modificarUsuario":
+                case "RegistroAction":    
 
                     //Se llena el objeto con los datos enviados por AJAX por el metodo post
                     u.setId(Integer.parseInt(request.getParameter("cedula")));

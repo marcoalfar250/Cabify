@@ -21,10 +21,6 @@ $(function () {
       $("#ModalRegistroUsuario").modal("hide");
     });
     
-    $("#btMostarFormUsuario").click(function () {
-        limpiarForm();
-    });
-    
 });
 
 function enviar() {
@@ -33,7 +29,7 @@ function enviar() {
         $.ajax({
             url: 'UsuarioServlet',
             data: {
-                accion: $("#UsuariosAction").val(),
+                accion: $("#RegistroAction").val(),
                 cedula: $("#cedula").val(),
                 nombre: $("#nombre").val(),
                 apellidos: $("#apellidos").val(),
@@ -52,8 +48,9 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
-                    $("#myModalUsuarios").modal("hide");
-                    consultarUsuarios();
+                    alert("Usted se ha registrodo a nuestra página");
+                    $("#ModalRegistroUsuario").modal("hide");
+                   
                 } else {
                     if (tipoRespuesta === "E~") {
                         mostrarMensaje("alert alert-danger", respuestaTxt, "Error!");

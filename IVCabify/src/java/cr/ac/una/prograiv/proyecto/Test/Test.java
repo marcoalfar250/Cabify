@@ -32,7 +32,7 @@ public class Test {
         //VL.merge(nv);
         //List<Vehiculo> veiculos = VL.findAll(Vehiculo.class.getName());
         //Veiculo bl = VL.findById("EDF-875");
-        Vehiculo marco = VL.findById("645746323");
+        Vehiculo marco = VL.findById("144567845");
 
         UsuarioBL UL = new UsuarioBL();
         Usuario us = UL.findById(115640030);
@@ -54,9 +54,9 @@ public class Test {
         //List<Conductor> lista = cbl.findAll(Conductor.class.getName());
         */
       ViajeBL vBBL = new ViajeBL();
+     Viaje v = new Viaje(12345,nueco,us,marco,new Date(),new Date(),new Date(),64464.54,"25355253","32324324",545454.2);
      
-     
-       //vBBL.save(v);
+       vBBL.save(v);
        //vBBL.merge(v);
        //Viaje f = vBBL.findById(111616);
        

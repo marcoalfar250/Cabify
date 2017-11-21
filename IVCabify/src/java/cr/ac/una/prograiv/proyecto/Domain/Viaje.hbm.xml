@@ -14,7 +14,7 @@
         <many-to-one name="usuario" class="cr.ac.una.prograiv.proyecto.Domain.Usuario" fetch="select">
             <column name="Usuario_Id" not-null="true" />
         </many-to-one>
-        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.proyecto.Domain.Vehiculo" fetch="select">
+        <many-to-one name="vehiculo" class="cr.ac.una.prograiv.proyecto.Domain.Vehiculo" fetch="select" lazy="false">
             <column name="Vehiculo_Placa" length="10" not-null="true" />
         </many-to-one>
         <property name="fecha" type="date">

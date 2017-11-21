@@ -26,18 +26,20 @@ public class Viaje  implements java.io.Serializable {
     }
 
     public Viaje(int id, Conductor conductor, Usuario usuario, Vehiculo vehiculo, Date fecha, Date horaIn, Date horaFn, double precioTotal, String puntoI, String puntoFinal, double distancia) {
-       this.id = id;
-       this.conductor = conductor;
-       this.usuario = usuario;
-       this.vehiculo = vehiculo;
-       this.fecha = fecha;
-       this.horaIn = horaIn;
-       this.horaFn = horaFn;
-       this.precioTotal = precioTotal;
-       this.puntoI = puntoI;
-       this.puntoFinal = puntoFinal;
-       this.distancia = distancia;
+        this.id = id;
+        this.conductor = conductor;
+        this.usuario = usuario;
+        this.vehiculo = vehiculo;
+        this.fecha = fecha;
+        this.horaIn = horaIn;
+        this.horaFn = horaFn;
+        this.precioTotal = precioTotal;
+        this.puntoI = puntoI;
+        this.puntoFinal = puntoFinal;
+        this.distancia = distancia;
     }
+
+    
    
     public int getId() {
         return this.id;

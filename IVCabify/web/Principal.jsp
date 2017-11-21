@@ -107,13 +107,13 @@
         </div>
 
         
-        <div class="modal face" id="Login1">
+        <div class="modal face" id="Login1" role="dialog">
     
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h1 class="logo-caption" aling="center"><span class="tweak">Iniciar </span>Sesión</h1>
+                        <h1 class="logo-caption" aling="center"><span class="logo-dec">Iniciar </span>Sesión</h1>
                     </div>
                     
                     <div class="modal-body">
@@ -125,9 +125,11 @@
                                 <div class="form-group" id="groupPassword">
                                     <input id="PasswordLogin" type="password" name="username" placeholder="Password" class="form-control" />
                                 </div>
+                                
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-default btn-block btn-custom" id="loginButton">Iniciar Sesión</button>
-                                    <button type="button" class="btn btn-default btn-block btn-custom" id="cancelar">Cancelar</button>
+                                    
+                                    <button type="button" class="btn btn-info btn-block btn-custom" id="loginButton">Iniciar Sesión</button>
+                                    <button type="button" class="btn btn-warning btn-block btn-custom" id="cancelar">Cancelar</button>
                                 </div>
                             </form>
                     </div>
@@ -198,6 +200,7 @@
                                     <div class="overlay-detail">
                                         <a href="#feature"><i class="fa fa-angle-down"></i></a>
                                     </div>
+                                    <div id="particles-js"></div>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +231,7 @@
                         </div><!-- /.controls -->
                     <!--</div><!-- /#login-box -->
                 <!--</div><!-- /.container -->
-                <div id="particles-js"></div>
+                
            <!-- </section> -->
             <section id="testimonial" class="wow fadeInUp delay-05s">
                 <div class="bg-testicolor">

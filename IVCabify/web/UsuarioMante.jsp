@@ -211,10 +211,10 @@
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="UsuarioMante.jsp">Mantenimiento Usuarios</a></li>
-                                                    <li><a href="#">Mantenimiento Veiculos</a></li>
+                                                    <li><a href="#">Mantenimiento Vehiculos</a></li>
                                                     <li><a href="#">Mantenimiento Conductores</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="Logout">Cerrar Sesión</a></li>
+                                                    <li><a href="Principal.jsp">Cerrar Sesión</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -226,7 +226,7 @@
                                         <!-- COLUMNA DEL BOTON DE CERRAR SESION -->
                                         <!-- ********************************************************** -->
                                         <div class="col-md-4" style="text-align: right;">
-                                            <a class="btn btn-warning" href="Logout" role="button">
+                                            <a class="btn btn-warning" href="Principal.jsp" role="button">
                                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                                                 Cerrar Sesión
                                             </a>

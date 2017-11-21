@@ -7,7 +7,8 @@ $(function () {
 
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
-        limpiarForm();
+        $("#Login1").modal("hide");
+        limpiarForm2();
     });
     
 });
@@ -36,6 +37,7 @@ function enviar() {
                 var tipoRespuesta = data.substring(0, 2);
                 if (tipoRespuesta === "C~") {
                     mostrarMensaje("alert alert-success", respuestaTxt, "Correcto!");
+                    alert("Sesión Iniciada");
                     $("#Login1").hide();
                     
                     //se redirecciona en JavaScript
@@ -111,4 +113,17 @@ function limpiarForm() {
     $('#formLogin').trigger("reset");
 }
 
+function limpiarForm2() {
+    //setea el focus del formulario
+    $('#usuario').focus();
+    $("#usuario").removeAttr("readonly"); //elimina el atributo de solo lectura
+    
+    //se cambia la accion por agregarPersona
+    $("#UsuariosAction").val("agregarUsuario"); 
 
+    //esconde el div del mensaje
+    mostrarMensaje("hiddenDiv", "", "");
+
+    //Resetear el formulario
+    $('#formLogin').trigger("reset");
+}

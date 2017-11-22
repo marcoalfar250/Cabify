@@ -6,6 +6,25 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    HttpSession sesion = request.getSession(true);
+    String nombre = "";
+    if(sesion!=null){
+    if(sesion.getAttribute("usuario") == null){
+    response.sendRedirect("Principal.jsp");
+    }
+    else
+    {
+       
+        nombre = (String) sesion.getAttribute("Nombre");
+    }
+    
+    }
+    else{
+            response.sendRedirect("Principal.jsp");
+        }
+    
+%>
 <html>
     <head>
         <title>Mantenimiento de Usuarios</title>
@@ -164,7 +183,7 @@
                             <div class="row">
                                 <div class="banner-info text-center wow fadeIn delay-05s">
                                     <h1 class="bnr-title">Bienvenido Administardor</h1>
-                                    <h2 class="bnr-sub-title">Nombre Admin</h2>
+                                    <h2 class="bnr-sub-title"><%out.print(sesion.getAttribute("Nombre"));%></h2>
                                     <p class="bnr-para">Ingresaste a la zona de mantenimientos de <span class="logo-dec">Cabify</span><br>Seleciona un elemento <br>para modificar o editar</p>
                                     <div class="overlay-detail">
                                         <a href="#feature"><i class="fa fa-angle-down"></i></a>
@@ -200,7 +219,7 @@
                                                     <li><a href="#">Mantenimiento Vehiculos</a></li>
                                                     <li><a href="#">Mantenimiento Conductores</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="Logout">Cerrar Sesión</a></li>
+                                                    <li><a href="Principal.jsp">Cerrar Sesión</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -212,7 +231,7 @@
                                         <!-- COLUMNA DEL BOTON DE CERRAR SESION -->
                                         <!-- ********************************************************** -->
                                         <div class="col-md-4" style="text-align: right;">
-                                            <a class="btn btn-warning" href="Logout" role="button">
+                                            <a class="btn btn-warning" href="Principal.jsp" role="button">
                                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                                                 Cerrar Sesión
                                             </a>

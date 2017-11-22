@@ -6,6 +6,21 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+    HttpSession sesion = request.getSession(true);
+    String nombre = "";
+    if(sesion != null){
+        if(sesion.getAttribute("usuario")== null){
+        response.sendRedirect("Principal.jsp");
+        }
+        else{
+        nombre = (String) sesion.getAttribute("Nombre");
+        }
+    }
+    else{
+        response.sendRedirect("Principal.jsp");
+    }
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -321,7 +336,7 @@
                             <div class="row">
                                 <div class="banner-info text-center wow fadeIn delay-05s">
                                     <h1 class="bnr-title">Bienvenido Administardor</h1>
-                                    <h2 class="bnr-sub-title">Nombre Admin</h2>
+                                    <h2 class="bnr-sub-title"><%out.print(sesion.getAttribute("Nombre"));%></h2>
                                     <p class="bnr-para">Ingresaste a la zona de mantenimientos de <span class="logo-dec">Cabify</span><br>Seleciona un elemento <br>para modificar o editar</p>
                                     <div class="overlay-detail">
                                         <a href="#feature"><i class="fa fa-angle-down"></i></a>
@@ -353,11 +368,11 @@
                                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Mantenimientos
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="#">Mantenimiento Usuarios</a></li>
-                                                    <li><a href="#">Mantenimiento Vehiculos</a></li>
-                                                    <li><a href="#">Mantenimiento Conductores</a></li>
+                                                    <li><a href="#UsuariosMante.jsp">Mantenimiento Usuarios</a></li>
+                                                    <li><a href="#VehiculosMante.jsp">Mantenimiento Vehiculos</a></li>
+                                                    <li><a href="#ConducorMante.jsp">Mantenimiento Conductores</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="Logout">Cerrar Sesión</a></li>
+                                                    <li><a href="jsp">Cerrar Sesión</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -369,7 +384,7 @@
                                         <!-- COLUMNA DEL BOTON DE CERRAR SESION -->
                                         <!-- ********************************************************** -->
                                         <div class="col-md-4" style="text-align: right;">
-                                            <a class="btn btn-warning" href="Logout" role="button">
+                                            <a class="btn btn-warning" href="principal.jsp" role="button">
                                                 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                                                 Cerrar Sesión
                                             </a>

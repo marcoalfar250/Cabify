@@ -11,7 +11,7 @@ $(function () {
     });
 
     //agrega los eventos las capas necesarias
-    $("#enviar").click(function () {
+    $("#enviar2").click(function () {
       enviar();
     });
 

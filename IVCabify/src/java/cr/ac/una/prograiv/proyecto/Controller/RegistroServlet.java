@@ -10,10 +10,14 @@ import cr.ac.una.prograiv.proyecto.BL.UsuarioBL;
 import cr.ac.una.prograiv.proyecto.Domain.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,10 +27,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Marco Andres
+ * @author Marco
  */
-@WebServlet(name = "UsuarioServlet", urlPatterns = {"/UsuarioServlet"})
-public class UsuarioServlet extends HttpServlet {
+@WebServlet(name = "RegistroServlet", urlPatterns = {"/RegistroServlet"})
+public class RegistroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +41,11 @@ public class UsuarioServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, InterruptedException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             String json;
 
             //Se crea el objeto Persona
@@ -51,71 +56,9 @@ public class UsuarioServlet extends HttpServlet {
 
             //Se hace una pausa para ver el modal
             Thread.sleep(1000);
-
-            //**********************************************************************
-            //se toman los datos de la session
-            //**********************************************************************
-            HttpSession session = request.getSession();
             String accion = request.getParameter("accion");
-            String usuario, password;
-            switch (accion) {
-                case "consultarUsuarios":
-                    json = new Gson().toJson(uBL.findAll(Usuario.class.getName()));
-                    out.print(json);
-                    break;
-
-                case "consultarUsuariosByID":
-                    //se consulta la persona por ID
-                    u = uBL.findById(Integer.parseInt(request.getParameter("idUsuario")));
-
-                    //se pasa la informacion del objeto a formato JSON
-                    json = new Gson().toJson(u);
-                    out.print(json);
-                    break;
-
-                case "eliminarUsuarios":
-
-                    u.setId(Integer.parseInt(request.getParameter("idUsuario")));
-
-                    //Se elimina el objeto
-                    uBL.delete(u);
-
-                    //Se imprime la respuesta con el response
-                    out.print("El usuario fue eliminado correctamente");
-
-                    break;
-                    
-                    case "validarUsuario": {
-
-                    Usuario verdadero = uBL.findById(Integer.parseInt(request.getParameter("usuario")));
-
-                    Integer usuarioTyped = Integer.valueOf(request.getParameter("usuario"));
-                    String passwordlOGIN = String.valueOf(request.getParameter("password"));
-
-                    if (usuarioTyped.equals(verdadero.getId())) {
-                        if (passwordlOGIN.equals(verdadero.getPassword())) {
-                            session = request.getSession(true);
-                            session.setAttribute("usuario", usuarioTyped);
-                            session.setAttribute("loginStatus", "login");
-                            session.setAttribute("Nombre", verdadero.getNombre());
-                            if ("admin".equals(verdadero.getTipoUsuario())) {
-                                session.setAttribute("tipo", "Administrador");
-                            } else {
-                                session.setAttribute("tipo", "Normal");
-                            }
-                            out.print("C~Validación correcta... Está siendo redireccionando");
-                        } else {
-                            out.print("E~Usuario o contraseña incorrectos");
-                        }
-                    }
-                }
-                break;
-
-                case "agregarUsuario":
-                case "modificarUsuario":
-                case "RegistroAction":    
-
-                    //Se llena el objeto con los datos enviados por AJAX por el metodo post
+            switch (accion){
+                case "RegistrarUsuario":
                     u.setId(Integer.parseInt(request.getParameter("cedula")));
                     u.setNombre(request.getParameter("nombre"));
                     u.setApellidos(request.getParameter("apellidos"));
@@ -135,33 +78,22 @@ public class UsuarioServlet extends HttpServlet {
                     u.setUltModUs(0);//nombre de la seccion
                     u.setUltimaMod(new Date());
 
-                    if (accion.equals("agregarUsuario")) { //es insertar personas
+                    if (accion.equals("RegistrarUsuario")) { //es insertar personas
                         //Se guarda el objeto
                         uBL.save(u);
 
                         //Se imprime la respuesta con el response
                         out.print("C~El usuario fue ingresado correctamente");
-
-                    } else {//es modificar persona
-                        //Se guarda el objeto
-                        uBL.merge(u);
-
-                        //Se imprime la respuesta con el response
-                        out.print("C~El usuario fue modificado correctamente");
-                    }
-
+            
+                    
+                    } 
                     break;
-                case "BuscarUsuario":
-                    json = new Gson().toJson(uBL.createQueryHQL(Integer.valueOf(request.getParameter("idUsuario"))));
-                    out.print(json);
-                    break;
-                
-
-                default:
+                    default:
                     out.print("E~No se indico la acción que se desea realizare");
                     break;
-            }
-        } catch (NumberFormatException e) {
+        }
+    }
+        catch (NumberFormatException e) {
             out.print("E~" + e.getMessage());
         } catch (Exception e) {
             out.print("E~" + e.getMessage());
@@ -180,7 +112,13 @@ public class UsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -194,7 +132,13 @@ public class UsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

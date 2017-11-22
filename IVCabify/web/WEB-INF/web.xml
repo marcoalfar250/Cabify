@@ -12,6 +12,10 @@
         <servlet-name>VehiculosServlet</servlet-name>
         <servlet-class>cr.ac.una.prograiv.proyecto.Controller.VehiculosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroServlet</servlet-name>
+        <servlet-class>cr.ac.una.prograiv.proyecto.Controller.RegistroServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/UsuarioServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>VehiculosServlet</servlet-name>
         <url-pattern>/VehiculosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroServlet</servlet-name>
+        <url-pattern>/RegistroServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

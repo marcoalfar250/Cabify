@@ -18,7 +18,7 @@
         <script src="js/particles.min.js" type="text/javascript"></script>
         <script src="js/ParJs.js" type="text/javascript"></script>
         <script src="js/LoginJs.js" type="text/javascript"></script>
-        <!--<script src="js/RegistroJS.js" type="text/javascript"></script> -->
+        <script src="js/RegistroJS.js" type="text/javascript"></script>
         
     </head>
     <body>
@@ -77,20 +77,21 @@
                                 <input type="text" class="form-control" id="Telefono" placeholder="Telefono">
                             </div>
 
-                            <div class="form-group" id="groupTipoLic">
+                           <div class="form-group" id="groupTipoLic">
                                 <label for="Telefono">Tipo Usuario:</label>
                                 <div class="selectContainer form-control">
                                     <select id="comboTipos" class="form-control" name="tipos">
+                                       
                                         <option value="">Escoja una opción</option>
                                         <option value="normal">Usuario Normal</option>
                                     </select>
                                 </div>
                             </div>
-
+                              
 
                             <div class="form-group">
                                 <input type="hidden" value="RegistrarUsuario" id="RegistroAction"/>
-                                <button type="submit" class="btn btn-primary" id="enviar">Guardar</button>
+                                <button type="submit" class="btn btn-primary" id="envia2r">Guardar</button>
                                 <button type="reset" class="btn btn-danger" id="cancelar2">Cancelar</button>
                             </div>
 
